@@ -12,6 +12,8 @@
 		512897F31BEC869800B59B62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512897F11BEC869800B59B62 /* Main.storyboard */; };
 		512897F51BEC869800B59B62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 512897F41BEC869800B59B62 /* Assets.xcassets */; };
 		512897F81BEC869800B59B62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512897F61BEC869800B59B62 /* LaunchScreen.storyboard */; };
+		512898041BEC99BF00B59B62 /* ShopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 512898031BEC99BF00B59B62 /* ShopTableViewController.m */; };
+		512898071BEC9B5100B59B62 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 512898061BEC9B5100B59B62 /* Helper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,10 @@
 		512897F41BEC869800B59B62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		512897F71BEC869800B59B62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		512897F91BEC869800B59B62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		512898021BEC99BF00B59B62 /* ShopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableViewController.h; sourceTree = "<group>"; };
+		512898031BEC99BF00B59B62 /* ShopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTableViewController.m; sourceTree = "<group>"; };
+		512898051BEC9B5100B59B62 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		512898061BEC9B5100B59B62 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,8 @@
 				512897EB1BEC869800B59B62 /* AppDelegate.h */,
 				512897EC1BEC869800B59B62 /* AppDelegate.m */,
 				512897E91BEC869800B59B62 /* main.m */,
+				512898051BEC9B5100B59B62 /* Helper.h */,
+				512898061BEC9B5100B59B62 /* Helper.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -79,6 +87,8 @@
 		512897FF1BEC97A700B59B62 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				512898021BEC99BF00B59B62 /* ShopTableViewController.h */,
+				512898031BEC99BF00B59B62 /* ShopTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -169,8 +179,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				512898041BEC99BF00B59B62 /* ShopTableViewController.m in Sources */,
 				512897ED1BEC869800B59B62 /* AppDelegate.m in Sources */,
 				512897EA1BEC869800B59B62 /* main.m in Sources */,
+				512898071BEC9B5100B59B62 /* Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
