@@ -19,7 +19,18 @@
 		5128980F1BEC9EB000B59B62 /* InitialShopItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5128980E1BEC9EB000B59B62 /* InitialShopItems.plist */; };
 		516713931BED4FC900B1DEE9 /* ShopItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 516713911BED4FC900B1DEE9 /* ShopItemTableViewCell.m */; };
 		516713941BED4FC900B1DEE9 /* ShopItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516713921BED4FC900B1DEE9 /* ShopItemTableViewCell.xib */; };
+		5167139C1BED6A8300B1DEE9 /* ItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5167139B1BED6A8300B1DEE9 /* ItemTest.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5167139E1BED6A8300B1DEE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 512897DD1BEC869800B59B62 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 512897E41BEC869800B59B62;
+			remoteInfo = eShop;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		512897E51BEC869800B59B62 /* eShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,10 +53,20 @@
 		516713901BED4FC900B1DEE9 /* ShopItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopItemTableViewCell.h; sourceTree = "<group>"; };
 		516713911BED4FC900B1DEE9 /* ShopItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopItemTableViewCell.m; sourceTree = "<group>"; };
 		516713921BED4FC900B1DEE9 /* ShopItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopItemTableViewCell.xib; sourceTree = "<group>"; };
+		516713991BED6A8300B1DEE9 /* eShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eShopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5167139B1BED6A8300B1DEE9 /* ItemTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemTest.m; sourceTree = "<group>"; };
+		5167139D1BED6A8300B1DEE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		512897E21BEC869800B59B62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		516713961BED6A8300B1DEE9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -59,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				512897E71BEC869800B59B62 /* eShop */,
+				5167139A1BED6A8300B1DEE9 /* eShopTests */,
 				512897E61BEC869800B59B62 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				512897E51BEC869800B59B62 /* eShop.app */,
+				516713991BED6A8300B1DEE9 /* eShopTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,6 +152,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		5167139A1BED6A8300B1DEE9 /* eShopTests */ = {
+			isa = PBXGroup;
+			children = (
+				5167139B1BED6A8300B1DEE9 /* ItemTest.m */,
+				5167139D1BED6A8300B1DEE9 /* Info.plist */,
+			);
+			path = eShopTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -149,6 +181,24 @@
 			productReference = 512897E51BEC869800B59B62 /* eShop.app */;
 			productType = "com.apple.product-type.application";
 		};
+		516713981BED6A8300B1DEE9 /* eShopTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 516713A01BED6A8300B1DEE9 /* Build configuration list for PBXNativeTarget "eShopTests" */;
+			buildPhases = (
+				516713951BED6A8300B1DEE9 /* Sources */,
+				516713961BED6A8300B1DEE9 /* Frameworks */,
+				516713971BED6A8300B1DEE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5167139F1BED6A8300B1DEE9 /* PBXTargetDependency */,
+			);
+			name = eShopTests;
+			productName = eShopTests;
+			productReference = 516713991BED6A8300B1DEE9 /* eShopTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -160,6 +210,10 @@
 				TargetAttributes = {
 					512897E41BEC869800B59B62 = {
 						CreatedOnToolsVersion = 7.1;
+					};
+					516713981BED6A8300B1DEE9 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 512897E41BEC869800B59B62;
 					};
 				};
 			};
@@ -177,6 +231,7 @@
 			projectRoot = "";
 			targets = (
 				512897E41BEC869800B59B62 /* eShop */,
+				516713981BED6A8300B1DEE9 /* eShopTests */,
 			);
 		};
 /* End PBXProject section */
@@ -191,6 +246,13 @@
 				512897F51BEC869800B59B62 /* Assets.xcassets in Resources */,
 				5128980F1BEC9EB000B59B62 /* InitialShopItems.plist in Resources */,
 				512897F31BEC869800B59B62 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		516713971BED6A8300B1DEE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,7 +273,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		516713951BED6A8300B1DEE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5167139C1BED6A8300B1DEE9 /* ItemTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5167139F1BED6A8300B1DEE9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 512897E41BEC869800B59B62 /* eShop */;
+			targetProxy = 5167139E1BED6A8300B1DEE9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		512897F11BEC869800B59B62 /* Main.storyboard */ = {
@@ -337,6 +415,30 @@
 			};
 			name = Release;
 		};
+		516713A11BED6A8300B1DEE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = eShopTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.VasylKotsiuba.eShopTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eShop.app/eShop";
+			};
+			name = Debug;
+		};
+		516713A21BED6A8300B1DEE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = eShopTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.VasylKotsiuba.eShopTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eShop.app/eShop";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -357,6 +459,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		516713A01BED6A8300B1DEE9 /* Build configuration list for PBXNativeTarget "eShopTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				516713A11BED6A8300B1DEE9 /* Debug */,
+				516713A21BED6A8300B1DEE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
