@@ -10,4 +10,29 @@
 
 @implementation Item
 
+- (void)setItemName:(NSString *)itemName {
+    
+    if (!itemName || [itemName isEqualToString:@""]) {
+        itemName = @"No name";
+    }
+    
+    _itemName = itemName;
+}
+
+- (void)setItemPrice:(NSString *)itemPrice {
+    if (!itemPrice || [itemPrice isEqualToString:@""]) {
+        itemPrice = @"0";
+    }
+    
+    _itemPrice = itemPrice;
+}
+
+- (void)setItemDescription:(NSString *)itemDescription {
+    if (!itemDescription || [itemDescription isEqualToString:@""]) {
+        itemDescription = @"No description";
+    }
+    
+    _itemDescription = itemDescription;
+}
+
 @end
