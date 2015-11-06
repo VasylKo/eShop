@@ -8,8 +8,13 @@
 
 #import "ShopTableViewController.h"
 #import "Helper.h"
+#import "ShopManager.h"
+#import "Item.h"
 
 @interface ShopTableViewController ()
+@property (nonatomic,strong) ShopManager *shopManager;
+@property (nonatomic, strong) NSArray *shopItems; //Of Item objects
+@property (weak, nonatomic) IBOutlet UIRefreshControl *tableRefreshControl;
 
 @end
 
@@ -23,29 +28,54 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.refreshControl beginRefreshing];
+    self.shopManager = [ShopManager sharedManager];
+    [self.shopManager loadShopDataInBackground:^(NSArray *shopItems) {
+        NSLog(@"Yes");
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+    }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Accessors
+- (NSArray *)shopItems {
+    return self.shopManager.shopItems;
 }
 
 #pragma mark - Table view data source
 
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 15;
+    return self.shopItems.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SHOP_ITEM_REUSABLE_IDENTIFIER forIndexPath:indexPath];
     
+    //Get item object
+    Item *item = self.shopItems[indexPath.row];
+    
+    //Configure the cell
+    UILabel *nameLabel = (UILabel *)[cell viewWithTag:ITEM_NAME_LABEL_TAG];
+    nameLabel.text = item.itemName;
+    
+    UILabel *descriptionLabel = (UILabel *)[cell viewWithTag:ITEM_DESCRIPTION_LABEL_TAG];
+    descriptionLabel.text = item.itemDescription;
+    
+    UIButton *buyNowButton = (UIButton *)[cell viewWithTag:1003];
+    [buyNowButton addTarget:self action:@selector(buyNowButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
     // Configure the cell...
     
     return cell;
+}
+
+#pragma mark - Table view delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50.0;
 }
 
 /*
@@ -91,5 +121,26 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)refreshTableTriggered:(UIRefreshControl *)refresh {
+    [self.shopManager loadShopDataInBackground:^(NSArray *shopItems) {
+        [self.tableView reloadData];
+        [refresh endRefreshing];
+        
+    }];
+}
+
+- (void)buyNowButtonPressed:(UIButton *)button
+{
+    //Get TableViewCell. First button super view is UITableViewCellContentView. Second should be UITableViewCell
+    id clickedCell = [[button superview] superview];
+    
+    //Check if we retrieve UITableViewCell
+    if ([clickedCell isMemberOfClass:[UITableViewCell class]]) {
+        NSIndexPath *clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
+        NSLog(@"Section: %d, Row: %d", clickedButtonPath.section, clickedButtonPath.row);
+    }
+    
+    
+}
 
 @end

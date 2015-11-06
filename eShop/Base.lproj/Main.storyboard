@@ -55,31 +55,43 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="15" reuseIdentifier="shopItem" rowHeight="60" id="aZ8-E8-jvt">
-                                <rect key="frame" x="0.0" y="92" width="600" height="60"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="15" reuseIdentifier="shopItem" rowHeight="50" id="aZ8-E8-jvt">
+                                <rect key="frame" x="0.0" y="92" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aZ8-E8-jvt" id="6JT-XK-CuP">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Description)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCV-4Z-3Jx">
-                                            <rect key="frame" x="8" y="42" width="84" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="$100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPI-HR-siI">
+                                            <rect key="frame" x="520.5" y="14.5" width="42.5" height="20.5"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPI-HR-siI">
-                                            <rect key="frame" x="535.5" y="15.5" width="56" height="29"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VmE-dO-pJm">
-                                            <rect key="frame" x="16" y="0.0" width="43" height="26.5"/>
+                                        <button opaque="NO" tag="1003" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5R-1z-3IU">
+                                            <rect key="frame" x="473.5" y="6.5" width="39" height="37"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="BH7-nk-WQy"/>
+                                                <constraint firstAttribute="height" constant="37" id="Mfb-lo-FWf"/>
+                                                <constraint firstAttribute="width" constant="39" id="Nu6-yV-VWR"/>
+                                                <constraint firstAttribute="width" constant="66" id="ahO-fN-IW9"/>
+                                            </constraints>
+                                            <color key="tintColor" red="0.039215686274509803" green="0.28627450980392155" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" title="Buy Now!" image="buyNowIcon"/>
+                                            <state key="highlighted" image="buyNowIconPressed"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="BH7-nk-WQy"/>
+                                                    <exclude reference="ahO-fN-IW9"/>
+                                                </mask>
+                                            </variation>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VmE-dO-pJm">
+                                            <rect key="frame" x="16" y="14.5" width="447.5" height="20.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -88,17 +100,24 @@
                                     <constraints>
                                         <constraint firstItem="dPI-HR-siI" firstAttribute="centerY" secondItem="6JT-XK-CuP" secondAttribute="centerY" id="0kk-VW-N5Y"/>
                                         <constraint firstItem="VmE-dO-pJm" firstAttribute="leading" secondItem="6JT-XK-CuP" secondAttribute="leading" constant="16" id="9oU-Iw-5ws"/>
-                                        <constraint firstItem="dPI-HR-siI" firstAttribute="trailing" secondItem="6JT-XK-CuP" secondAttribute="trailingMargin" id="DYt-jL-ZIt"/>
-                                        <constraint firstItem="GCV-4Z-3Jx" firstAttribute="leading" secondItem="6JT-XK-CuP" secondAttribute="leading" constant="8" id="Oi0-RR-2LK"/>
-                                        <constraint firstAttribute="bottom" secondItem="GCV-4Z-3Jx" secondAttribute="bottom" id="RLA-hu-78v"/>
+                                        <constraint firstAttribute="trailing" secondItem="dPI-HR-siI" secondAttribute="trailing" constant="4" id="AOn-Tb-Rl1"/>
+                                        <constraint firstItem="dPI-HR-siI" firstAttribute="trailing" secondItem="6JT-XK-CuP" secondAttribute="trailingMargin" constant="-8" id="DYt-jL-ZIt"/>
+                                        <constraint firstItem="F5R-1z-3IU" firstAttribute="leading" secondItem="VmE-dO-pJm" secondAttribute="trailing" constant="10" id="EFr-Pc-YBe"/>
+                                        <constraint firstItem="VmE-dO-pJm" firstAttribute="centerY" secondItem="6JT-XK-CuP" secondAttribute="centerY" id="EuB-fE-H4N"/>
+                                        <constraint firstItem="dPI-HR-siI" firstAttribute="leading" secondItem="F5R-1z-3IU" secondAttribute="trailing" constant="8" id="SUi-k2-dU8"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="dPI-HR-siI" secondAttribute="trailing" id="deP-sW-yzt"/>
                                         <constraint firstItem="VmE-dO-pJm" firstAttribute="leading" secondItem="6JT-XK-CuP" secondAttribute="leadingMargin" constant="8" id="h1c-TB-6o0"/>
                                         <constraint firstItem="VmE-dO-pJm" firstAttribute="top" secondItem="6JT-XK-CuP" secondAttribute="topMargin" id="i5y-at-Xhn"/>
                                         <constraint firstItem="VmE-dO-pJm" firstAttribute="top" secondItem="6JT-XK-CuP" secondAttribute="top" id="l6M-Z0-IVf"/>
+                                        <constraint firstItem="F5R-1z-3IU" firstAttribute="centerY" secondItem="6JT-XK-CuP" secondAttribute="centerY" id="nZ2-ua-VSG"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="h1c-TB-6o0"/>
                                             <exclude reference="i5y-at-Xhn"/>
+                                            <exclude reference="l6M-Z0-IVf"/>
+                                            <exclude reference="DYt-jL-ZIt"/>
+                                            <exclude reference="deP-sW-yzt"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -110,11 +129,24 @@
                             <outlet property="delegate" destination="BRS-HI-036" id="BJ7-pH-V8W"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Магазин" id="DES-dT-JfY"/>
+                    <navigationItem key="navigationItem" title="Магазин" id="DES-dT-JfY">
+                        <barButtonItem key="leftBarButtonItem" image="shopedItemsIcon" id="rnb-Yl-kkm"/>
+                        <barButtonItem key="rightBarButtonItem" image="emptyCartIcon" style="done" id="6SQ-m6-FIV"/>
+                    </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="wgx-yp-TRA">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <connections>
+                            <action selector="refreshTableTriggered:" destination="BRS-HI-036" eventType="valueChanged" id="Tgg-6L-Llq"/>
+                        </connections>
+                    </refreshControl>
+                    <connections>
+                        <outlet property="tableRefreshControl" destination="wgx-yp-TRA" id="SXW-Na-eUB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9oH-G3-832" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1938" y="7"/>
+            <point key="canvasLocation" x="2123" y="7"/>
         </scene>
         <!--Добавленные товары-->
         <scene sceneID="zYH-Ai-wR2">
@@ -263,6 +295,10 @@
     </scenes>
     <resources>
         <image name="addItemsIcon" width="25" height="28"/>
+        <image name="buyNowIcon" width="39" height="37"/>
+        <image name="buyNowIconPressed" width="39" height="37"/>
+        <image name="emptyCartIcon" width="25" height="25"/>
         <image name="shopIcon" width="22" height="26"/>
+        <image name="shopedItemsIcon" width="25" height="38"/>
     </resources>
 </document>
