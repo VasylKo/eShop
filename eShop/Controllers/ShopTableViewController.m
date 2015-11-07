@@ -112,7 +112,6 @@
         
         ItemDetailsTableViewController *itemDetailsVC = segue.destinationViewController;
         itemDetailsVC.item = currentlySelectedItem;
-        itemDetailsVC.itemDetailsViewControllerMode = ItemDetailsViewControllerModeBuyItem;
     }
 }
 

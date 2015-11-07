@@ -17,6 +17,7 @@ typedef NS_ENUM (NSUInteger, ItemDetailsViewControllerMode) {
 
 @interface ItemDetailsTableViewController : UITableViewController
 @property (nonatomic, strong) Item *item;
+
 @property (nonatomic) ItemDetailsViewControllerMode itemDetailsViewControllerMode;
 
 @end
