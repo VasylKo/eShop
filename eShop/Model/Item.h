@@ -14,4 +14,6 @@
 @property (nonatomic, strong) NSString *itemDescription;
 @property (nonatomic, strong) NSString *itemPrice;
 
+- (instancetype)initWithName:(NSString *)name description:(NSString *)description andPrice:(NSString *)price;
+
 @end

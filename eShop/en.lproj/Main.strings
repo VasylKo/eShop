@@ -12,7 +12,7 @@
 "AaQ-1m-oLr.title" = "Добавить товар";
 
 /* Class = "UITextView"; text = "$100"; ObjectID = "Cqh-rb-9dX"; */
-"Cqh-rb-9dX.text" = "$100";
+"Cqh-rb-9dX.text" = "100";
 
 /* Class = "UINavigationItem"; title = "Магазин"; ObjectID = "DES-dT-JfY"; */
 "DES-dT-JfY.title" = "Магазин";

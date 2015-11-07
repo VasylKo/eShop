@@ -11,6 +11,18 @@
 
 @implementation Item
 
+- (instancetype)initWithName:(NSString *)name description:(NSString *)description andPrice:(NSString *)price {
+    self = [super init];
+    
+    if (self) {
+        _itemName = name;
+        _itemDescription = description;
+        _itemPrice = price;
+    }
+    
+    return self;
+}
+
 - (void)setItemName:(NSString *)itemName {
     
     if (!itemName || [itemName isEqualToString:@""]) {

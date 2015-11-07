@@ -227,7 +227,7 @@ Display \ Материал корпуса: 7000 Series Space Gray Aluminum \ Com
                                                         <action selector="buyItemButtonPressed:" destination="KfC-xY-HW9" eventType="touchUpInside" id="7w3-oB-NMl"/>
                                                     </connections>
                                                 </button>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="$100" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Cqh-rb-9dX">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="100" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Cqh-rb-9dX">
                                                     <rect key="frame" x="8" y="8" width="517" height="27.5"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

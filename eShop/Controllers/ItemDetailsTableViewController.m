@@ -99,10 +99,21 @@
 - (void)addItemToShop {
     [self.view endEditing:YES];
     
-    [self.shopManager addItemToShop:nil withCompletionHandler:^(BOOL success) {
-        [Helper showOKAlertWithTitle:self.itemNameTextView.text
-                          andMessage:@"Товар добвлен в магазин"
-                    inViewController:self];
+    Item *item = [[Item alloc] initWithName:self.itemNameTextView.text
+                                description:self.itemDescriptionTextView.text
+                                   andPrice:self.itemPriceTextView.text];
+    
+    
+    ItemDetailsTableViewController * __weak weakSelf = self;
+    [self.shopManager addItemToShop:item withCompletionHandler:^(BOOL success) {
+        
+        //Make UI updates in main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [Helper showOKAlertWithTitle:item.itemName
+                              andMessage:@"Товар добвлен в магазин"
+                        inViewController:weakSelf];
+        });
+        
     }];
     
 }

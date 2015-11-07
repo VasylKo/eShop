@@ -77,23 +77,27 @@
 
 - (void)addItemToShop:(Item *)item withCompletionHandler:(void (^)(BOOL success))completionHandler {
     
-    NSArray *addedItems = [NSArray new];
-    NSString *JSONFilePath = [self JSONFileLocation];
+    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(concurrentQueue, ^{
+        NSArray *addedItems = [NSArray new];
+        NSString *JSONFilePath = [self JSONFileLocation];
+        
+        if ([self fileExistsAtPath:JSONFilePath]) {
+            addedItems = [self loadJSONData];
+        }
+        
+        //Parse item
+        NSDictionary *itemDic = [self parseItemToDictionary:item];
+        
+        //Add parsed item to array
+        addedItems = [addedItems arrayByAddingObject:itemDic];
+        
+        //Write array to disk
+        [self saveArrayAsJSON:addedItems toPath:JSONFilePath];
+        [NSThread sleepForTimeInterval:ADD_ITEM_TIME];
+        completionHandler(YES);
+    });
     
-    if ([self fileExistsAtPath:JSONFilePath]) {
-        addedItems = [self loadJSONData];
-    }
-    
-    //Parse item
-    NSDictionary *itemDic = [self parseItemToDictionary:item];
-    
-    //Add parsed item to array
-    addedItems = [addedItems arrayByAddingObject:itemDic];
-    
-    //Write array to disk
-    [self saveArrayAsJSON:addedItems toPath:JSONFilePath];
-    [NSThread sleepForTimeInterval:ADD_ITEM_TIME];
-    completionHandler(YES);
 }
 
 #pragma mark - Hepler methods
