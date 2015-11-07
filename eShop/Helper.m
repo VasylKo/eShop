@@ -29,5 +29,18 @@
     return result;
 }
 
++ (void)showOKAlertWithTitle:(nullable NSString *)title andMessage:(nullable NSString *)message inViewController:(UIViewController *)viewController {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
+                                                                             message:message
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okActin = [UIAlertAction actionWithTitle:@"OK"
+                                                      style:UIAlertActionStyleDefault
+                                                    handler:nil];
+    
+    [alertController addAction:okActin];
+    
+    
+    [viewController presentViewController:alertController animated:YES completion:nil];
+}
 
 @end

@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-
+#import <UIKit/UIKit.h>
 
 @interface Helper : NSObject
 
@@ -31,5 +30,6 @@
 
 //Convert NSString with number into localaized currency formatted string 
 + (NSString *)currencyFormatter:(NSString *)givenString;
++ (void)showOKAlertWithTitle:(NSString *)title andMessage:(NSString *)message inViewController:(UIViewController *)vc;
 
 @end

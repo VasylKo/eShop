@@ -7,8 +7,9 @@
 //
 
 #import "ItemDetailsTableViewController.h"
+#import "Helper.h"
 
-@interface ItemDetailsTableViewController ()
+@interface ItemDetailsTableViewController () <UITextViewDelegate>
 @property (nonatomic, strong) UIBarButtonItem *cancelBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *doneBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *cartButton;
@@ -23,14 +24,9 @@
 
 @implementation ItemDetailsTableViewController
 
+#pragma mark - View life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //Create bar button items
     self.cancelBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
@@ -50,16 +46,15 @@
     [self prepareViewControllerForMode:self.itemDetailsViewControllerMode];
     [self setupTextViews];
     
+    //Set gesture recognizer (handle tap to hide keyboard)
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchUpinside:)];
+    tap.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:tap];
+    
     
 }
 
-- (void)viewDidLayoutSubviews {
-    //To scroll text view contetn to top
-//    [self.itemNameTextView setContentOffset:CGPointZero animated:YES];
-//    [self.itemDescriptionTextView setContentOffset:CGPointZero animated:YES];
-//    [self.itemPriceTextView setContentOffset:CGPointZero animated:YES];
-}
-
+#pragma mark - Initial setup
 - (void)prepareViewControllerForMode:(ItemDetailsViewControllerMode)mode
 {
     switch (mode) {
@@ -96,9 +91,16 @@
     self.itemNameTextView.text = itemName;
     self.itemDescriptionTextView.text= itemDescription;
     self.itemPriceTextView.text = itemPrice;
+    
     self.itemNameTextView.editable = self.enableEditing;
     self.itemDescriptionTextView.editable = self.enableEditing;
     self.itemPriceTextView.editable = self.enableEditing;
+    
+    self.itemPriceTextView.keyboardType = UIKeyboardTypeNumberPad;
+    
+    self.itemNameTextView.delegate = self;
+    self.itemDescriptionTextView.delegate= self;
+    self.itemPriceTextView.delegate = self;
     
 }
 #pragma mark - Table view data source
@@ -159,15 +161,65 @@
 }
 */
 
+#pragma mark - Handle touch
+- (void)touchUpinside:(UITapGestureRecognizer *)sender
+{
+    //Resign first responder
+    [self.view endEditing:YES];
+}
+
 #pragma mark - Actions
 - (IBAction)buyItemButtonPressed:(UIButton *)sender {
 }
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([self isTextFilled]) {
+        [self saveChangesMadeToItem];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [Helper showOKAlertWithTitle:@"Ошибка" andMessage:@"Пожалуйста, заполните всю информацию о товаре" inViewController:self];
+    }
+    
 }
 - (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - Actions
+- (void)saveChangesMadeToItem {
+}
+
+#pragma mark - Text view delegate
+
+- (BOOL) textView: (UITextView*) textView
+shouldChangeTextInRange: (NSRange) range
+  replacementText: (NSString*) text
+{
+    //Prevent entering letters to price text view
+    if (textView == self.itemPriceTextView) {
+        return  [self isPriceStringValid:text] ? YES : NO;
+    }
+    
+    return YES;
+}
+
+#pragma mark - Helper methods
+- (BOOL)isTextFilled {
+    if (self.itemNameTextView.text.length > 0 &&
+        self.itemDescriptionTextView.text > 0 &&
+        self.itemPriceTextView.text.length > 0) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (BOOL)isPriceStringValid:(NSString *)string
+{
+    NSRange inRange;
+    NSCharacterSet *allowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
+    inRange = [string rangeOfCharacterFromSet:allowedChars];
+    
+    return inRange.location != NSNotFound ? NO : YES;
+}
 
 @end
