@@ -30,12 +30,26 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [self.refreshControl beginRefreshing];
     self.shopManager = [ShopManager sharedManager];
-    [self.shopManager loadShopDataInBackground:^(NSArray *shopItems) {
-        NSLog(@"Yes");
-        [self.tableView reloadData];
-        [self.refreshControl endRefreshing];
+    [self refreshShopData];
+    
+}
+
+- (void)refreshShopData {
+    [self.refreshControl beginRefreshing];
+    
+    [self.shopManager loadShopDataInBackground:^(BOOL success) {
+        
+        //Make UI updates in main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (success) {
+            [self.tableView reloadData];
+            }
+            
+            [self.refreshControl endRefreshing];
+        });
+      
+        
     }];
 }
 
@@ -118,11 +132,7 @@
 
 #pragma mark - Actions
 - (IBAction)refreshTableTriggered:(UIRefreshControl *)refresh {
-    [self.shopManager loadShopDataInBackground:^(NSArray *shopItems) {
-        [self.tableView reloadData];
-        [refresh endRefreshing];
-        
-    }];
+    [self refreshShopData];
 }
 
 - (void)buyNowButtonPressed:(UIButton *)button

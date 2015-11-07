@@ -15,7 +15,7 @@
 //Singleton
 + (instancetype)sharedManager;
 
-- (void)loadShopDataInBackground:(void (^)(NSArray *shopItems))completionHandler; //Array of Item objects
+- (void)loadShopDataInBackground:(void (^)(BOOL success))completionHandler; //Array of Item objects
 - (void)addItemToShop:(Item *)item withCompletionHandler:(void (^)(BOOL success))completionHandler;
 
 @end

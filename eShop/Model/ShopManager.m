@@ -38,11 +38,17 @@
 }
 
 #pragma mark - Shop manager
-- (void)loadShopDataInBackground:(void (^)(NSArray *shopItems))completionHandler {
+- (void)loadShopDataInBackground:(void (^)(BOOL success))completionHandler {
     
-    [self loadShopDataFromPlist];
-    [NSThread sleepForTimeInterval:SHOP_REFRESH_TIME];
-    completionHandler(self.shopItems);
+    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(concurrentQueue, ^{
+        #warning Test delay to show that data is loading in backgroung
+        [NSThread sleepForTimeInterval:SHOP_REFRESH_TIME];
+        [self loadShopDataFromPlist];
+        
+        completionHandler(YES);
+    });
+    
 }
 
 - (void)loadShopDataFromPlist {
@@ -79,6 +85,9 @@
     
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(concurrentQueue, ^{
+        #warning Test delay to emutale time nedeed to add item to shop
+        [NSThread sleepForTimeInterval:ADD_ITEM_TIME];
+        
         NSArray *addedItems = [NSArray new];
         NSString *JSONFilePath = [self JSONFileLocation];
         
@@ -94,7 +103,7 @@
         
         //Write array to disk
         [self saveArrayAsJSON:addedItems toPath:JSONFilePath];
-        [NSThread sleepForTimeInterval:ADD_ITEM_TIME];
+        
         completionHandler(YES);
     });
     
