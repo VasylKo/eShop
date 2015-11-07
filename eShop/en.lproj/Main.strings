@@ -1,0 +1,42 @@
+
+/* Class = "UITableViewSection"; headerTitle = "Цена"; ObjectID = "4s2-Zy-STp"; */
+"4s2-Zy-STp.headerTitle" = "Цена";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "86D-Bm-dqA"; */
+"86D-Bm-dqA.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UINavigationItem"; title = "Добавить товар"; ObjectID = "8w4-Ny-W4F"; */
+"8w4-Ny-W4F.title" = "Добавить товар";
+
+/* Class = "UITabBarItem"; title = "Добавить товар"; ObjectID = "AaQ-1m-oLr"; */
+"AaQ-1m-oLr.title" = "Добавить товар";
+
+/* Class = "UITextView"; text = "$100"; ObjectID = "Cqh-rb-9dX"; */
+"Cqh-rb-9dX.text" = "$100";
+
+/* Class = "UINavigationItem"; title = "Магазин"; ObjectID = "DES-dT-JfY"; */
+"DES-dT-JfY.title" = "Магазин";
+
+/* Class = "UIButton"; normalTitle = "Buy Now!"; ObjectID = "F5R-1z-3IU"; */
+"F5R-1z-3IU.normalTitle" = "Buy Now!";
+
+/* Class = "UITableViewSection"; headerTitle = "Описание"; ObjectID = "FLD-JC-9lb"; */
+"FLD-JC-9lb.headerTitle" = "Описание";
+
+/* Class = "UILabel"; text = "Item"; ObjectID = "VmE-dO-pJm"; */
+"VmE-dO-pJm.text" = "Item";
+
+/* Class = "UITableViewSection"; headerTitle = "Назваине"; ObjectID = "bLH-7N-bqm"; */
+"bLH-7N-bqm.headerTitle" = "Назваине";
+
+/* Class = "UITabBarItem"; title = "Магазин"; ObjectID = "biM-rE-DrG"; */
+"biM-rE-DrG.title" = "Магазин";
+
+/* Class = "UILabel"; text = "$100"; ObjectID = "dPI-HR-siI"; */
+"dPI-HR-siI.text" = "$100";
+
+/* Class = "UITextView"; text = "iWatch"; ObjectID = "r7i-Yp-3rj"; */
+"r7i-Yp-3rj.text" = "iWatch";
+
+/* Class = "UINavigationItem"; title = "Добавленные товары"; ObjectID = "t0F-Y2-4T6"; */
+"t0F-Y2-4T6.title" = "Добавленные товары";

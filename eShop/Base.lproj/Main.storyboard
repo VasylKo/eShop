@@ -101,25 +101,11 @@
                                         <constraint firstItem="dPI-HR-siI" firstAttribute="centerY" secondItem="6JT-XK-CuP" secondAttribute="centerY" id="0kk-VW-N5Y"/>
                                         <constraint firstItem="VmE-dO-pJm" firstAttribute="leading" secondItem="6JT-XK-CuP" secondAttribute="leading" constant="16" id="9oU-Iw-5ws"/>
                                         <constraint firstAttribute="trailing" secondItem="dPI-HR-siI" secondAttribute="trailing" constant="4" id="AOn-Tb-Rl1"/>
-                                        <constraint firstItem="dPI-HR-siI" firstAttribute="trailing" secondItem="6JT-XK-CuP" secondAttribute="trailingMargin" constant="-8" id="DYt-jL-ZIt"/>
                                         <constraint firstItem="F5R-1z-3IU" firstAttribute="leading" secondItem="VmE-dO-pJm" secondAttribute="trailing" constant="10" id="EFr-Pc-YBe"/>
                                         <constraint firstItem="VmE-dO-pJm" firstAttribute="centerY" secondItem="6JT-XK-CuP" secondAttribute="centerY" id="EuB-fE-H4N"/>
                                         <constraint firstItem="dPI-HR-siI" firstAttribute="leading" secondItem="F5R-1z-3IU" secondAttribute="trailing" constant="8" id="SUi-k2-dU8"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="dPI-HR-siI" secondAttribute="trailing" id="deP-sW-yzt"/>
-                                        <constraint firstItem="VmE-dO-pJm" firstAttribute="leading" secondItem="6JT-XK-CuP" secondAttribute="leadingMargin" constant="8" id="h1c-TB-6o0"/>
-                                        <constraint firstItem="VmE-dO-pJm" firstAttribute="top" secondItem="6JT-XK-CuP" secondAttribute="topMargin" id="i5y-at-Xhn"/>
-                                        <constraint firstItem="VmE-dO-pJm" firstAttribute="top" secondItem="6JT-XK-CuP" secondAttribute="top" id="l6M-Z0-IVf"/>
                                         <constraint firstItem="F5R-1z-3IU" firstAttribute="centerY" secondItem="6JT-XK-CuP" secondAttribute="centerY" id="nZ2-ua-VSG"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="h1c-TB-6o0"/>
-                                            <exclude reference="i5y-at-Xhn"/>
-                                            <exclude reference="l6M-Z0-IVf"/>
-                                            <exclude reference="DYt-jL-ZIt"/>
-                                            <exclude reference="deP-sW-yzt"/>
-                                        </mask>
-                                    </variation>
                                 </tableViewCellContentView>
                                 <animations/>
                             </tableViewCell>
@@ -228,7 +214,7 @@
         <!--Добавить товар-->
         <scene sceneID="hHl-IU-6WZ">
             <objects>
-                <tableViewController id="KfC-xY-HW9" sceneMemberID="viewController">
+                <tableViewController id="KfC-xY-HW9" customClass="ItemDetailsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="2Nh-gV-IuR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -237,13 +223,28 @@
                         <sections>
                             <tableViewSection headerTitle="Назваине" id="bLH-7N-bqm">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0ZX-Ql-1TN">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="0ZX-Ql-1TN">
                                         <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0ZX-Ql-1TN" id="lhQ-vu-iHi">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="iWatch" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="r7i-Yp-3rj">
+                                                    <rect key="frame" x="0.0" y="8" width="600" height="27.5"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="r7i-Yp-3rj" firstAttribute="leading" secondItem="lhQ-vu-iHi" secondAttribute="leading" id="Fwt-cn-Zf7"/>
+                                                <constraint firstAttribute="bottom" secondItem="r7i-Yp-3rj" secondAttribute="bottom" constant="8" id="Pxn-ib-eJF"/>
+                                                <constraint firstAttribute="trailing" secondItem="r7i-Yp-3rj" secondAttribute="trailing" id="cxX-Hz-Kim"/>
+                                                <constraint firstItem="r7i-Yp-3rj" firstAttribute="top" secondItem="lhQ-vu-iHi" secondAttribute="top" constant="8" id="fAH-wQ-V4U"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -251,13 +252,29 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Описание" id="FLD-JC-9lb">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="K5a-g6-NaK">
-                                        <rect key="frame" x="0.0" y="207.5" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="K5a-g6-NaK">
+                                        <rect key="frame" x="0.0" y="207.5" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K5a-g6-NaK" id="3Wg-qu-ZgY">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="86D-Bm-dqA">
+                                                    <rect key="frame" x="0.0" y="8" width="600" height="83.5"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="86D-Bm-dqA" secondAttribute="trailing" id="e69-QQ-sBq"/>
+                                                <constraint firstAttribute="bottom" secondItem="86D-Bm-dqA" secondAttribute="bottom" constant="8" id="eDX-xX-lpx"/>
+                                                <constraint firstItem="86D-Bm-dqA" firstAttribute="top" secondItem="3Wg-qu-ZgY" secondAttribute="top" constant="8" id="ovG-sO-OyH"/>
+                                                <constraint firstItem="86D-Bm-dqA" firstAttribute="leading" secondItem="3Wg-qu-ZgY" secondAttribute="leading" id="ySc-G4-2iF"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -266,12 +283,37 @@
                             <tableViewSection headerTitle="Цена" id="4s2-Zy-STp">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1dU-tH-Xig">
-                                        <rect key="frame" x="0.0" y="301.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="357.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1dU-tH-Xig" id="GbO-WV-Eoa">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXa-op-y0a">
+                                                    <rect key="frame" x="533" y="3" width="39" height="37"/>
+                                                    <animations/>
+                                                    <state key="normal" image="buyNowIcon"/>
+                                                    <connections>
+                                                        <action selector="buyItemButtonPressed:" destination="KfC-xY-HW9" eventType="touchUpInside" id="7w3-oB-NMl"/>
+                                                    </connections>
+                                                </button>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="$100" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Cqh-rb-9dX">
+                                                    <rect key="frame" x="0.0" y="8" width="525" height="27.5"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
+                                                </textView>
+                                            </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="bXa-op-y0a" firstAttribute="centerY" secondItem="GbO-WV-Eoa" secondAttribute="centerY" id="JGt-ln-vOS"/>
+                                                <constraint firstAttribute="bottom" secondItem="Cqh-rb-9dX" secondAttribute="bottom" constant="8" id="Ke9-NA-hhA"/>
+                                                <constraint firstItem="Cqh-rb-9dX" firstAttribute="leading" secondItem="GbO-WV-Eoa" secondAttribute="leading" id="M9y-DL-VtP"/>
+                                                <constraint firstItem="Cqh-rb-9dX" firstAttribute="top" secondItem="GbO-WV-Eoa" secondAttribute="top" constant="8" id="buI-Bo-P4Y"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bXa-op-y0a" secondAttribute="trailing" constant="20" id="mbY-Vc-isr"/>
+                                                <constraint firstItem="bXa-op-y0a" firstAttribute="leading" secondItem="Cqh-rb-9dX" secondAttribute="trailing" constant="8" id="ml7-Mj-ilK"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -284,8 +326,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Добавить товар" id="8w4-Ny-W4F">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="oAD-Pl-eYd"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="HO5-cs-dEG"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="oAD-Pl-eYd">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="KfC-xY-HW9" id="hKl-iB-X2z"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="HO5-cs-dEG">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="KfC-xY-HW9" id="Akk-qw-Qua"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PLa-c7-0NU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -299,6 +349,6 @@
         <image name="buyNowIconPressed" width="39" height="37"/>
         <image name="emptyCartIcon" width="25" height="25"/>
         <image name="shopIcon" width="22" height="26"/>
-        <image name="shopedItemsIcon" width="25" height="38"/>
+        <image name="shopedItemsIcon" width="20" height="30"/>
     </resources>
 </document>
