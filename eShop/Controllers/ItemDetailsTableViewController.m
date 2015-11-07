@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UIBarButtonItem *doneBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *cartButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *butItemButton;
 @property (weak, nonatomic) IBOutlet UITextView *itemNameTextView;
 @property (weak, nonatomic) IBOutlet UITextView *itemDescriptionTextView;
 @property (weak, nonatomic) IBOutlet UITextView *itemPriceTextView;
@@ -65,12 +66,15 @@
         case (ItemDetailsViewControllerModeBuyItem):
             self.navigationItem.rightBarButtonItem = self.cartButton;
             self.enableEditing = NO;
+            self.title = self.item ? self.item.itemName : @"Товар";
             break;
             
         case (ItemDetailsViewControllerModeAddItem):
-           // UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd t];
-            //NSString *mgg = [NSString al]
-            
+            self.navigationItem.rightBarButtonItem = self.doneBarButtonItem;
+            self.navigationItem.leftBarButtonItem = self.cancelBarButtonItem;
+            self.enableEditing = YES;
+            self.butItemButton.hidden = YES;
+            self.title = @"Добавить товар";
             break;
             
         default:
@@ -92,7 +96,6 @@
     self.itemNameTextView.text = itemName;
     self.itemDescriptionTextView.text= itemDescription;
     self.itemPriceTextView.text = itemPrice;
-    
     self.itemNameTextView.editable = self.enableEditing;
     self.itemDescriptionTextView.editable = self.enableEditing;
     self.itemPriceTextView.editable = self.enableEditing;

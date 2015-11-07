@@ -140,7 +140,7 @@
         <!--Добавленные товары-->
         <scene sceneID="zYH-Ai-wR2">
             <objects>
-                <tableViewController id="teN-tq-ULf" sceneMemberID="viewController">
+                <tableViewController id="teN-tq-ULf" customClass="AddedItemsListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="DVW-7I-Xio">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,7 +166,7 @@
                     <navigationItem key="navigationItem" title="Добавленные товары" id="t0F-Y2-4T6">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="x5e-KT-mbp">
                             <connections>
-                                <segue destination="hf8-D6-btC" kind="presentation" id="4IZ-xT-cOj"/>
+                                <segue destination="hf8-D6-btC" kind="presentation" identifier="addItem" id="4IZ-xT-cOj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -332,6 +332,7 @@ Display \ Материал корпуса: 7000 Series Space Gray Aluminum \ Com
                     </tableView>
                     <navigationItem key="navigationItem" title="Добавить товар" id="8w4-Ny-W4F"/>
                     <connections>
+                        <outlet property="butItemButton" destination="bXa-op-y0a" id="4Hi-pu-zAU"/>
                         <outlet property="itemDescriptionTextView" destination="86D-Bm-dqA" id="Mid-rH-Pss"/>
                         <outlet property="itemNameTextView" destination="r7i-Yp-3rj" id="62K-OT-zqE"/>
                         <outlet property="itemPriceTextView" destination="Cqh-rb-9dX" id="7Xg-kT-XKx"/>

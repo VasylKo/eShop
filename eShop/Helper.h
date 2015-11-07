@@ -27,6 +27,7 @@
 
 //Segue identifiers
 #define SHOW_ITEM_DETAILS_SEGUE_IDENTIFIER @"showItemDetails"
+#define ADD_ITEM_SEGUE_IDENTIFIER @"addItem"
 
 //Convert NSString with number into localaized currency formatted string 
 + (NSString *)currencyFormatter:(NSString *)givenString;

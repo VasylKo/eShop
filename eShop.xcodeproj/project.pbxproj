@@ -22,6 +22,7 @@
 		5167139C1BED6A8300B1DEE9 /* ItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5167139B1BED6A8300B1DEE9 /* ItemTest.m */; };
 		516713A41BED6CED00B1DEE9 /* ShopManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 516713A31BED6CED00B1DEE9 /* ShopManagerTest.m */; };
 		516713AB1BEDF21100B1DEE9 /* ItemDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516713AA1BEDF21100B1DEE9 /* ItemDetailsTableViewController.m */; };
+		516713AE1BEE151900B1DEE9 /* AddedItemsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516713AD1BEE151900B1DEE9 /* AddedItemsListTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		516713A81BEDF15200B1DEE9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		516713A91BEDF21100B1DEE9 /* ItemDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailsTableViewController.h; sourceTree = "<group>"; };
 		516713AA1BEDF21100B1DEE9 /* ItemDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailsTableViewController.m; sourceTree = "<group>"; };
+		516713AC1BEE151900B1DEE9 /* AddedItemsListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddedItemsListTableViewController.h; sourceTree = "<group>"; };
+		516713AD1BEE151900B1DEE9 /* AddedItemsListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddedItemsListTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,8 @@
 				512898031BEC99BF00B59B62 /* ShopTableViewController.m */,
 				516713A91BEDF21100B1DEE9 /* ItemDetailsTableViewController.h */,
 				516713AA1BEDF21100B1DEE9 /* ItemDetailsTableViewController.m */,
+				516713AC1BEE151900B1DEE9 /* AddedItemsListTableViewController.h */,
+				516713AD1BEE151900B1DEE9 /* AddedItemsListTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -276,6 +281,7 @@
 				5128980D1BEC9E8500B59B62 /* Item.m in Sources */,
 				512898041BEC99BF00B59B62 /* ShopTableViewController.m in Sources */,
 				512897ED1BEC869800B59B62 /* AppDelegate.m in Sources */,
+				516713AE1BEE151900B1DEE9 /* AddedItemsListTableViewController.m in Sources */,
 				512897EA1BEC869800B59B62 /* main.m in Sources */,
 				5128980A1BEC9E2600B59B62 /* ShopManager.m in Sources */,
 				516713AB1BEDF21100B1DEE9 /* ItemDetailsTableViewController.m in Sources */,
