@@ -7,9 +7,11 @@
 //
 
 #import "ItemDetailsTableViewController.h"
+#import "ShopManager.h"
 #import "Helper.h"
 
 @interface ItemDetailsTableViewController () <UITextViewDelegate>
+@property (nonatomic,strong) ShopManager *shopManager;
 
 @property (weak, nonatomic) IBOutlet UIButton *butItemButton;
 @property (weak, nonatomic) IBOutlet UITextView *itemNameTextView;
@@ -23,6 +25,7 @@
 #pragma mark - View life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.shopManager = [ShopManager sharedManager];
     
     if (self.item) {
         [self prepareViewControllerForBuyItemMode];
@@ -41,13 +44,15 @@
 #pragma mark - Initial setup
 - (void)prepareViewControllerForBuyItemMode{
     
-    self.navigationItem.rightBarButtonItem = nil;
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                 target:self action:@selector(shareButtonPressed:)];
+    self.navigationItem.rightBarButtonItem = shareButton;
     self.title = self.item ? self.item.itemName : @"Товар";
     
     //Get items details
     self.itemNameTextView.text = self.item.itemName;
     self.itemDescriptionTextView.text = self.item.itemDescription;
-    self.itemPriceTextView.text = self.item.itemPrice;
+    self.itemPriceTextView.text = [Helper currencyFormatter:self.item.itemPrice];
     
     self.itemNameTextView.editable = NO;
     self.itemDescriptionTextView.editable = NO;
@@ -56,9 +61,9 @@
 }
 
 - (void)prepareViewControllerForAddItemMode {
-    self.itemNameTextView.text = @"";
-    self.itemDescriptionTextView.text = @"";
-    self.itemPriceTextView.text = @"";
+    //self.itemNameTextView.text = @"";
+    //self.itemDescriptionTextView.text = @"";
+    //self.itemPriceTextView.text = @"";
    
     self.butItemButton.hidden = YES;
 }
@@ -79,16 +84,27 @@
 - (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
     if ([self isTextFilled]) {
         [self addItemToShop];
-        [self dismissViewControllerAnimated:YES completion:nil];
     } else {
-        [Helper showOKAlertWithTitle:@"Ошибка" andMessage:@"Пожалуйста, заполните всю информацию о товаре" inViewController:self];
+        [Helper showOKAlertWithTitle:@"Ошибка"
+                          andMessage:@"Пожалуйста, заполните всю информацию о товаре"
+                    inViewController:self];
     }
     
+}
+
+- (void)shareButtonPressed:(UIBarButtonItem *)sender {
 }
 
 #pragma mark - Add item
 - (void)addItemToShop {
     [self.view endEditing:YES];
+    
+    [self.shopManager addItemToShop:nil withCompletionHandler:^(BOOL success) {
+        [Helper showOKAlertWithTitle:self.itemNameTextView.text
+                          andMessage:@"Товар добвлен в магазин"
+                    inViewController:self];
+    }];
+    
 }
 
 #pragma mark - Text view delegate

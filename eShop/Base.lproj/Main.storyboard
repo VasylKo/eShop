@@ -63,33 +63,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="$100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPI-HR-siI">
-                                            <rect key="frame" x="520.5" y="14.5" width="42.5" height="20.5"/>
+                                            <rect key="frame" x="520" y="14" width="42.5" height="20.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" tag="1002" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5R-1z-3IU">
-                                            <rect key="frame" x="473.5" y="6.5" width="39" height="37"/>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="BH7-nk-WQy"/>
-                                                <constraint firstAttribute="height" constant="37" id="Mfb-lo-FWf"/>
-                                                <constraint firstAttribute="width" constant="39" id="Nu6-yV-VWR"/>
-                                                <constraint firstAttribute="width" constant="66" id="ahO-fN-IW9"/>
-                                            </constraints>
-                                            <color key="tintColor" red="0.039215686274509803" green="0.28627450980392155" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
-                                            <state key="normal" title="Buy Now!" image="buyNowIcon"/>
-                                            <state key="highlighted" image="buyNowIconPressed"/>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="BH7-nk-WQy"/>
-                                                    <exclude reference="ahO-fN-IW9"/>
-                                                </mask>
-                                            </variation>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VmE-dO-pJm">
-                                            <rect key="frame" x="16" y="14.5" width="447.5" height="20.5"/>
+                                            <rect key="frame" x="16" y="14.5" width="484.5" height="20.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -101,10 +82,8 @@
                                         <constraint firstItem="dPI-HR-siI" firstAttribute="centerY" secondItem="6JT-XK-CuP" secondAttribute="centerY" id="0kk-VW-N5Y"/>
                                         <constraint firstItem="VmE-dO-pJm" firstAttribute="leading" secondItem="6JT-XK-CuP" secondAttribute="leading" constant="16" id="9oU-Iw-5ws"/>
                                         <constraint firstAttribute="trailing" secondItem="dPI-HR-siI" secondAttribute="trailing" constant="4" id="AOn-Tb-Rl1"/>
-                                        <constraint firstItem="F5R-1z-3IU" firstAttribute="leading" secondItem="VmE-dO-pJm" secondAttribute="trailing" constant="10" id="EFr-Pc-YBe"/>
                                         <constraint firstItem="VmE-dO-pJm" firstAttribute="centerY" secondItem="6JT-XK-CuP" secondAttribute="centerY" id="EuB-fE-H4N"/>
-                                        <constraint firstItem="dPI-HR-siI" firstAttribute="leading" secondItem="F5R-1z-3IU" secondAttribute="trailing" constant="8" id="SUi-k2-dU8"/>
-                                        <constraint firstItem="F5R-1z-3IU" firstAttribute="centerY" secondItem="6JT-XK-CuP" secondAttribute="centerY" id="nZ2-ua-VSG"/>
+                                        <constraint firstItem="dPI-HR-siI" firstAttribute="leading" secondItem="VmE-dO-pJm" secondAttribute="trailing" constant="20" id="NiI-rp-spi"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>

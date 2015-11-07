@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class Item;
 
 @interface ShopManager : NSObject
 @property (nonatomic, strong, readonly) NSArray *shopItems;
@@ -15,5 +16,6 @@
 + (instancetype)sharedManager;
 
 - (void)loadShopDataInBackground:(void (^)(NSArray *shopItems))completionHandler; //Array of Item objects
+- (void)addItemToShop:(Item *)item withCompletionHandler:(void (^)(BOOL success))completionHandler;
 
 @end

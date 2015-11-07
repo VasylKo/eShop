@@ -63,7 +63,7 @@
     nameLabel.text = item.itemName;
     
     UILabel *priceLabel = (UILabel *)[cell viewWithTag:ITEM_PRICE_LABEL_TAG];
-    priceLabel.text = item.itemPrice;
+    priceLabel.text = [Helper currencyFormatter:item.itemPrice];
     
     UIButton *buyNowButton = (UIButton *)[cell viewWithTag:BUY_NOW_BUTTON_TAG];
     [buyNowButton addTarget:self action:@selector(buyNowButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
