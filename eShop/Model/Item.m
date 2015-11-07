@@ -7,8 +7,10 @@
 //
 
 #import "Item.h"
+#import "Helper.h"
 
 @implementation Item
+@synthesize itemPrice = _itemPrice;
 
 - (void)setItemName:(NSString *)itemName {
     
@@ -33,6 +35,11 @@
     }
     
     _itemDescription = itemDescription;
+}
+
+- (NSString *)itemPrice
+{
+    return [Helper currencyFormatter:_itemPrice];
 }
 
 @end

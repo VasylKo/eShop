@@ -62,14 +62,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="$100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPI-HR-siI">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="$100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPI-HR-siI">
                                             <rect key="frame" x="520.5" y="14.5" width="42.5" height="20.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" tag="1003" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5R-1z-3IU">
+                                        <button opaque="NO" tag="1002" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5R-1z-3IU">
                                             <rect key="frame" x="473.5" y="6.5" width="39" height="37"/>
                                             <animations/>
                                             <constraints>
@@ -108,6 +108,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <segue destination="KfC-xY-HW9" kind="show" identifier="showItemDetails" id="PeI-h4-o0Z"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -116,8 +119,8 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Магазин" id="DES-dT-JfY">
-                        <barButtonItem key="leftBarButtonItem" image="shopedItemsIcon" id="rnb-Yl-kkm"/>
-                        <barButtonItem key="rightBarButtonItem" image="emptyCartIcon" style="done" id="6SQ-m6-FIV"/>
+                        <barButtonItem key="leftBarButtonItem" image="shopedItemsIcon" style="plain" id="rnb-Yl-kkm"/>
+                        <barButtonItem key="rightBarButtonItem" image="emptyCartIcon" style="plain" id="6SQ-m6-FIV"/>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="wgx-yp-TRA">
                         <autoresizingMask key="autoresizingMask"/>
@@ -230,19 +233,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="iWatch" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="r7i-Yp-3rj">
-                                                    <rect key="frame" x="0.0" y="8" width="600" height="27.5"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Apple watch" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="r7i-Yp-3rj">
+                                                    <rect key="frame" x="8" y="8" width="584" height="27.5"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstItem="r7i-Yp-3rj" firstAttribute="leading" secondItem="lhQ-vu-iHi" secondAttribute="leading" id="Fwt-cn-Zf7"/>
+                                                <constraint firstItem="r7i-Yp-3rj" firstAttribute="leading" secondItem="lhQ-vu-iHi" secondAttribute="leading" constant="8" id="Fwt-cn-Zf7"/>
                                                 <constraint firstAttribute="bottom" secondItem="r7i-Yp-3rj" secondAttribute="bottom" constant="8" id="Pxn-ib-eJF"/>
-                                                <constraint firstAttribute="trailing" secondItem="r7i-Yp-3rj" secondAttribute="trailing" id="cxX-Hz-Kim"/>
+                                                <constraint firstAttribute="trailing" secondItem="r7i-Yp-3rj" secondAttribute="trailing" constant="8" id="cxX-Hz-Kim"/>
                                                 <constraint firstItem="r7i-Yp-3rj" firstAttribute="top" secondItem="lhQ-vu-iHi" secondAttribute="top" constant="8" id="fAH-wQ-V4U"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -252,28 +255,29 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Описание" id="FLD-JC-9lb">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="K5a-g6-NaK">
-                                        <rect key="frame" x="0.0" y="207.5" width="600" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="170" id="K5a-g6-NaK">
+                                        <rect key="frame" x="0.0" y="207.5" width="600" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K5a-g6-NaK" id="3Wg-qu-ZgY">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="169.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="86D-Bm-dqA">
-                                                    <rect key="frame" x="0.0" y="8" width="600" height="83.5"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="86D-Bm-dqA">
+                                                    <rect key="frame" x="8" y="8" width="584" height="133.5"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <string key="text">Размер: 42mm \ Экран: цветной / сенсорный / защитное стекло Ion-X Glass 
+Display \ Материал корпуса: 7000 Series Space Gray Aluminum \ Composite Back \ Цвет: Черный  \ Операционная система: Apple Watch OS \ Связь: Wi-Fi / NFC</string>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="86D-Bm-dqA" secondAttribute="trailing" id="e69-QQ-sBq"/>
+                                                <constraint firstAttribute="trailing" secondItem="86D-Bm-dqA" secondAttribute="trailing" constant="8" id="e69-QQ-sBq"/>
                                                 <constraint firstAttribute="bottom" secondItem="86D-Bm-dqA" secondAttribute="bottom" constant="8" id="eDX-xX-lpx"/>
                                                 <constraint firstItem="86D-Bm-dqA" firstAttribute="top" secondItem="3Wg-qu-ZgY" secondAttribute="top" constant="8" id="ovG-sO-OyH"/>
-                                                <constraint firstItem="86D-Bm-dqA" firstAttribute="leading" secondItem="3Wg-qu-ZgY" secondAttribute="leading" id="ySc-G4-2iF"/>
+                                                <constraint firstItem="86D-Bm-dqA" firstAttribute="leading" secondItem="3Wg-qu-ZgY" secondAttribute="leading" constant="8" id="ySc-G4-2iF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -282,8 +286,8 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Цена" id="4s2-Zy-STp">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1dU-tH-Xig">
-                                        <rect key="frame" x="0.0" y="357.5" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="1dU-tH-Xig">
+                                        <rect key="frame" x="0.0" y="427.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1dU-tH-Xig" id="GbO-WV-Eoa">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -293,15 +297,16 @@
                                                     <rect key="frame" x="533" y="3" width="39" height="37"/>
                                                     <animations/>
                                                     <state key="normal" image="buyNowIcon"/>
+                                                    <state key="highlighted" image="buyNowIconPressed"/>
                                                     <connections>
                                                         <action selector="buyItemButtonPressed:" destination="KfC-xY-HW9" eventType="touchUpInside" id="7w3-oB-NMl"/>
                                                     </connections>
                                                 </button>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="$100" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Cqh-rb-9dX">
-                                                    <rect key="frame" x="0.0" y="8" width="525" height="27.5"/>
+                                                    <rect key="frame" x="8" y="8" width="517" height="27.5"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                                 </textView>
                                             </subviews>
@@ -309,7 +314,7 @@
                                             <constraints>
                                                 <constraint firstItem="bXa-op-y0a" firstAttribute="centerY" secondItem="GbO-WV-Eoa" secondAttribute="centerY" id="JGt-ln-vOS"/>
                                                 <constraint firstAttribute="bottom" secondItem="Cqh-rb-9dX" secondAttribute="bottom" constant="8" id="Ke9-NA-hhA"/>
-                                                <constraint firstItem="Cqh-rb-9dX" firstAttribute="leading" secondItem="GbO-WV-Eoa" secondAttribute="leading" id="M9y-DL-VtP"/>
+                                                <constraint firstItem="Cqh-rb-9dX" firstAttribute="leading" secondItem="GbO-WV-Eoa" secondAttribute="leading" constant="8" id="M9y-DL-VtP"/>
                                                 <constraint firstItem="Cqh-rb-9dX" firstAttribute="top" secondItem="GbO-WV-Eoa" secondAttribute="top" constant="8" id="buI-Bo-P4Y"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="bXa-op-y0a" secondAttribute="trailing" constant="20" id="mbY-Vc-isr"/>
                                                 <constraint firstItem="bXa-op-y0a" firstAttribute="leading" secondItem="Cqh-rb-9dX" secondAttribute="trailing" constant="8" id="ml7-Mj-ilK"/>
@@ -325,18 +330,12 @@
                             <outlet property="delegate" destination="KfC-xY-HW9" id="67J-ZI-Otn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Добавить товар" id="8w4-Ny-W4F">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="oAD-Pl-eYd">
-                            <connections>
-                                <action selector="cancelButtonPressed:" destination="KfC-xY-HW9" id="hKl-iB-X2z"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="HO5-cs-dEG">
-                            <connections>
-                                <action selector="doneButtonPressed:" destination="KfC-xY-HW9" id="Akk-qw-Qua"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Добавить товар" id="8w4-Ny-W4F"/>
+                    <connections>
+                        <outlet property="itemDescriptionTextView" destination="86D-Bm-dqA" id="Mid-rH-Pss"/>
+                        <outlet property="itemNameTextView" destination="r7i-Yp-3rj" id="62K-OT-zqE"/>
+                        <outlet property="itemPriceTextView" destination="Cqh-rb-9dX" id="7Xg-kT-XKx"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PLa-c7-0NU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -351,4 +350,7 @@
         <image name="shopIcon" width="22" height="26"/>
         <image name="shopedItemsIcon" width="20" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="PeI-h4-o0Z"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -9,6 +9,14 @@
 #import "ItemDetailsTableViewController.h"
 
 @interface ItemDetailsTableViewController ()
+@property (nonatomic, strong) UIBarButtonItem *cancelBarButtonItem;
+@property (nonatomic, strong) UIBarButtonItem *doneBarButtonItem;
+@property (nonatomic, strong) UIBarButtonItem *cartButton;
+
+@property (weak, nonatomic) IBOutlet UITextView *itemNameTextView;
+@property (weak, nonatomic) IBOutlet UITextView *itemDescriptionTextView;
+@property (weak, nonatomic) IBOutlet UITextView *itemPriceTextView;
+@property (nonatomic) BOOL enableEditing;
 
 @end
 
@@ -22,24 +30,77 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    //Create bar button items
+    self.cancelBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                             target:self
+                                                                             action:@selector(cancelButtonPressed:)];
+    
+    self.doneBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                           target:self
+                                                                           action:@selector(doneButtonPressed:)];
+    UIImage *emptyCartImage = [UIImage imageNamed:@"emptyCartIcon"];
+    self.cartButton = [[UIBarButtonItem alloc] initWithImage:emptyCartImage
+                                                                   style:UIBarButtonItemStylePlain
+                                                                  target:self
+                                                                  action:nil];
+    
+
+    [self prepareViewControllerForMode:self.itemDetailsViewControllerMode];
+    [self setupTextViews];
+    
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidLayoutSubviews {
+    //To scroll text view contetn to top
+//    [self.itemNameTextView setContentOffset:CGPointZero animated:YES];
+//    [self.itemDescriptionTextView setContentOffset:CGPointZero animated:YES];
+//    [self.itemPriceTextView setContentOffset:CGPointZero animated:YES];
 }
 
+- (void)prepareViewControllerForMode:(ItemDetailsViewControllerMode)mode
+{
+    switch (mode) {
+        case (ItemDetailsViewControllerModeBuyItem):
+            self.navigationItem.rightBarButtonItem = self.cartButton;
+            self.enableEditing = NO;
+            break;
+            
+        case (ItemDetailsViewControllerModeAddItem):
+           // UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd t];
+            //NSString *mgg = [NSString al]
+            
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)setupTextViews {
+    NSString *itemName = @"";
+    NSString *itemDescription = @"";
+    NSString *itemPrice = @"";
+    
+    if (self.item) {
+        itemName = self.item.itemName;
+        itemDescription = self.item.itemDescription;
+        itemPrice = self.item.itemPrice;
+    }
+    
+    self.itemNameTextView.text = itemName;
+    self.itemDescriptionTextView.text= itemDescription;
+    self.itemPriceTextView.text = itemPrice;
+    
+    self.itemNameTextView.editable = self.enableEditing;
+    self.itemDescriptionTextView.editable = self.enableEditing;
+    self.itemPriceTextView.editable = self.enableEditing;
+    
+}
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
-}
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -99,8 +160,10 @@
 - (IBAction)buyItemButtonPressed:(UIButton *)sender {
 }
 - (IBAction)doneButtonPressed:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

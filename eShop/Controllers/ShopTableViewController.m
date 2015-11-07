@@ -10,11 +10,13 @@
 #import "Helper.h"
 #import "ShopManager.h"
 #import "Item.h"
+#import "ItemDetailsTableViewController.h"
 
 @interface ShopTableViewController ()
 @property (nonatomic,strong) ShopManager *shopManager;
 @property (nonatomic, strong) NSArray *shopItems; //Of Item objects
 @property (weak, nonatomic) IBOutlet UIRefreshControl *tableRefreshControl;
+@property (nonatomic, strong) Item *currentlySelectedItem;
 
 @end
 
@@ -60,10 +62,10 @@
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:ITEM_NAME_LABEL_TAG];
     nameLabel.text = item.itemName;
     
-    UILabel *descriptionLabel = (UILabel *)[cell viewWithTag:ITEM_DESCRIPTION_LABEL_TAG];
-    descriptionLabel.text = item.itemDescription;
+    UILabel *priceLabel = (UILabel *)[cell viewWithTag:ITEM_PRICE_LABEL_TAG];
+    priceLabel.text = item.itemPrice;
     
-    UIButton *buyNowButton = (UIButton *)[cell viewWithTag:1003];
+    UIButton *buyNowButton = (UIButton *)[cell viewWithTag:BUY_NOW_BUTTON_TAG];
     [buyNowButton addTarget:self action:@selector(buyNowButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     
@@ -75,8 +77,9 @@
 
 #pragma mark - Table view delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50.0;
+    return SHOP_ITEMS_TABLE_ROW_HIEGHT;
 }
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -98,29 +101,23 @@
 }
 */
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:SHOW_ITEM_DETAILS_SEGUE_IDENTIFIER]) {
+        //Get currently selected Item to be passed to Item details VC
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        Item *currentlySelectedItem = self.shopItems[indexPath.row];
+        
+        ItemDetailsTableViewController *itemDetailsVC = segue.destinationViewController;
+        itemDetailsVC.item = currentlySelectedItem;
+        itemDetailsVC.itemDetailsViewControllerMode = ItemDetailsViewControllerModeBuyItem;
+    }
 }
-*/
+
+
+#pragma mark - Actions
 - (IBAction)refreshTableTriggered:(UIRefreshControl *)refresh {
     [self.shopManager loadShopDataInBackground:^(NSArray *shopItems) {
         [self.tableView reloadData];

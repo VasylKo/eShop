@@ -4,27 +4,44 @@
 <array>
 	<dict>
 		<key>price</key>
-		<string>550</string>
+		<string>450</string>
 		<key>description</key>
-		<string>Экран 4.7&quot; Retina (1334x750, сенсорный емкостный, 3D Touch) / моноблок / Apple A9 / камера 12 Мп + фронтальная 5 Мп / Bluetooth 4.2 / Wi-Fi 802.11 a/b/g/n/ac / 2 ГБ оперативной памяти / 16 ГБ встроенной памяти / NFC / 3G / LTE / GPS / GLONASS / разъем 3.5 мм / iOS 9 / 138.3 x 67.1 x 7.1 мм, 143 г / серебристы</string>
+		<string>Размер: 42mm \ Экран: цветной / сенсорный / защитное стекло Ion-X Glass 
+Display \ Материал корпуса: 7000 Series Space Gray Aluminum \ Composite Back \ Цвет: Черный  \ Операционная система: Apple Watch OS \ Связь: Wi-Fi / NFC</string>
 		<key>name</key>
-		<string>Apple iPhone 6</string>
+		<string>Apple Watch Sport</string>
+	</dict>
+	<dict>
+		<key>price</key>
+		<string>300</string>
+		<key>description</key>
+		<string>Экран 7.9&quot; IPS (2048x1536) емкостный Multi-Touch / Apple A7 (1.3 ГГц) / RAM 1 ГБ / 16 ГБ встроенной памяти / Wi-Fi / Bluetooth 4.0 / основная камера 5 Мп, фронтальная - 1.2 Мп / iOS 8 / 331 г / серебристый</string>
+		<key>name</key>
+		<string>iPad mini 3</string>
 	</dict>
 	<dict>
 		<key>price</key>
 		<string>650</string>
 		<key>description</key>
-		<string>Экран 4.7&quot; Retina (1334x750, сенсорный емкостный, 3D Touch) / моноблок / Apple A9 / камера 12 Мп + фронтальная 5 Мп / Bluetooth 4.2 / Wi-Fi 802.11 a/b/g/n/ac / 2 ГБ оперативной памяти / 16 ГБ встроенной памяти / NFC / 3G / LTE / GPS / GLONASS / разъем 3.5 мм / iOS 9 / 138.3 x 67.1 x 7.1 мм, 143 г / серебристы</string>
+		<string>Экран 4.7&quot; Retina (1334x750, сенсорный емкостный, Multi‑Touch) / моноблок / Apple A8 / камера 8 Мп + фронтальная 1.2 Мп / Bluetooth 4.0 / Wi-Fi 802.11 a/b/g/n/ac / 1 ГБ оперативной памяти / 128 ГБ встроенной памяти / NFC / 3G / LTE / GPS / GLONASS / разъем 3.5 мм / iOS 8 / 138.1 x 67 x 6.9 мм, 129 г / золотистый</string>
 		<key>name</key>
-		<string>Apple iPhone 6s</string>
+		<string>iPhone 6</string>
 	</dict>
 	<dict>
 		<key>price</key>
-		<string>850</string>
+		<string>750</string>
+		<key>description</key>
+		<string>Экран 4.7&quot; Retina (1334x750, сенсорный емкостный, 3D Touch) / моноблок / Apple A9 / камера 12 Мп + фронтальная 5 Мп / Bluetooth 4.2 / Wi-Fi 802.11 a/b/g/n/ac / 2 ГБ оперативной памяти / 16 ГБ встроенной памяти / NFC / 3G / LTE / GPS / GLONASS / разъем 3.5 мм / iOS 9 / 138.3 x 67.1 x 7.1 мм, 143 г / серебристы</string>
+		<key>name</key>
+		<string>iPhone 6s</string>
+	</dict>
+	<dict>
+		<key>price</key>
+		<string>950</string>
 		<key>description</key>
 		<string>Экран 5.5&quot; Retina (1920x1080, сенсорный емкостный, 3D Touch) / моноблок / Apple A9 / камера 12 Мп + фронтальная 5 Мп / Bluetooth 4.2 / Wi-Fi 802.11 a/b/g/n/ac / 2 ГБ оперативной памяти / 16 ГБ встроенной памяти / NFC / 3G / LTE / GPS / GLONASS / разъем 3.5 мм / iOS 9 / 158.2 x 77.9 x 7.3 мм, 192 г / серый космос</string>
 		<key>name</key>
-		<string>Apple iPhone 6s Plus</string>
+		<string>iPhone 6s Plus</string>
 	</dict>
 </array>
 </plist>
