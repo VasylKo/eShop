@@ -15,7 +15,9 @@
 @interface ItemDetailsTableViewController () <UITextViewDelegate, MFMailComposeViewControllerDelegate>
 @property (nonatomic,strong) ShopManager *shopManager;
 
-@property (weak, nonatomic) IBOutlet UIButton *butItemButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *buyItemActivityIndicator;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *addItemActivityIndicator;
+@property (weak, nonatomic) IBOutlet UIButton *buyItemButton;
 @property (weak, nonatomic) IBOutlet UITextView *itemNameTextView;
 @property (weak, nonatomic) IBOutlet UITextView *itemDescriptionTextView;
 @property (weak, nonatomic) IBOutlet UITextView *itemPriceTextView;
@@ -39,6 +41,8 @@
     } else {
         [self prepareViewControllerForAddItemMode];
     }
+    
+    self.buyItemActivityIndicator.hidden = YES;
     
     //Set gesture recognizer (handle tap to hide keyboard)
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchUpinside:)];
@@ -66,11 +70,16 @@
 }
 
 - (void)prepareViewControllerForAddItemMode {
-//    self.itemNameTextView.text = @"";
-//    self.itemDescriptionTextView.text = @"";
-//    self.itemPriceTextView.text = @"";
+    [self clearTextViews];
    
-    self.butItemButton.hidden = YES;
+    self.buyItemButton.hidden = YES;
+    self.navigationItem.leftBarButtonItem = nil;
+}
+
+- (void)clearTextViews {
+    self.itemNameTextView.text = @"";
+    self.itemDescriptionTextView.text = @"";
+    self.itemPriceTextView.text = @"";
 }
 
 #pragma mark - Handle touch
@@ -82,8 +91,17 @@
 
 #pragma mark - Actions
 - (IBAction)buyItemButtonPressed:(UIButton *)sender {
+    self.buyItemActivityIndicator.hidden = NO;
+    self.buyItemButton.enabled = NO;
+    [self.buyItemActivityIndicator startAnimating];
     if (self.item) {
         [self.shopManager purchaseItem:self.item withCompletionHandler:^(BOOL success) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.buyItemActivityIndicator stopAnimating];
+                self.buyItemActivityIndicator.hidden = YES;
+                self.buyItemButton.enabled = YES;
+            });
             
         }];
     }
@@ -111,17 +129,25 @@
                                 description:self.itemDescriptionTextView.text
                                    andPrice:self.itemPriceTextView.text];
     
+    //add activity indicator
+    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    activityView.backgroundColor = [UIColor lightGrayColor];
+    activityView.layer.cornerRadius = 3.0;
+    UIBarButtonItem *batButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityView];
+    self.navigationItem.leftBarButtonItem = batButtonItem;
+    [activityView startAnimating];
     
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    [self clearTextViews];
+    
+    ItemDetailsTableViewController * __weak weakSelf = self;
     [self.shopManager addItemToShop:item withCompletionHandler:^(BOOL success) {
         
         //Make UI updates in main thread
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (success) {
-                /*
-                [Helper showOKAlertWithTitle:item.itemName
-                                  andMessage:@"Товар добвлен в магазин"];
-                 */
-            }
+            weakSelf.navigationItem.rightBarButtonItem.enabled = YES;
+            [activityView stopAnimating];
+            weakSelf.navigationItem.leftBarButtonItem = batButtonItem;
             
         });
         
