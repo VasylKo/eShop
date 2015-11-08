@@ -8,13 +8,15 @@
 
 #import "Helper.h"
 
-@interface Helper ()
-@property (nonatomic, strong) NSMutableArray *popupLabels; //Of UILabels
-@end
+//static NSMutableArray *popupStorage; //Of UILabels
+
+//@interface Helper ()
+//@property (nonatomic, strong) NSMutableArray *popupStorage; //Of UILabels
+//@end
 
 @implementation Helper
 
-
+#pragma mark - Localized currency
 + (NSString *)currencyFormatter:(NSString *)givenString {
     
     NSString *result = @"";
@@ -49,31 +51,9 @@
     [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alertController animated:YES completion:nil];
 }
 
-#pragma mark - Singleton
-//To make popup methods work properly
-+ (instancetype)sharedHelper
-{
-    
-    static Helper *sharedHelper = nil;
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken, ^{
-        sharedHelper = [[Helper alloc] init];
-        
-        if (sharedHelper) {
-            sharedHelper.popupLabels = [[NSMutableArray alloc] init];
-        }
-    });
-    
-    return sharedHelper;
-    
-}
+
 
 #pragma mark - Popup
-#define POPUP_DELAY 1.5
-#define POPUP_HEIGHT 50
-#define POPUP_WIDTH 250
-#define POPUP_VERTICAL_OFFSET 10
 + (void)showPopupWithMesssage:(NSString *)message
 {
     if ([message isEqualToString:@""]) {
@@ -81,17 +61,17 @@
         return;
     }
     
-    Helper *sharedHelper = [self sharedHelper];
+    //Helper *sharedHelper = [self sharedHelper];
     
     //Create popup label
     UILabel *popupLabel = [self createLabelWithText:message];
-    [sharedHelper.popupLabels addObject:popupLabel];
+    [self.popupStorage addObject:popupLabel];
     
     //Get keyWindos
     UIWindow *appKeyWindow = [[UIApplication sharedApplication] keyWindow];
     
     //Set popup position on screen
-    [sharedHelper calculatePopupPosition];
+    [self calculatePopupPosition];
     
     //show popup
     [appKeyWindow addSubview:popupLabel];
@@ -106,38 +86,45 @@
     [self performSelector:@selector(dismissPopup:) withObject:popupLabel afterDelay:POPUP_DELAY];
 }
 
+//We neew uniq array to store and manage in right way all popups in order to be able to show more than one popup at time by class method showPopupWithMesssage:
++ (NSMutableArray *)popupStorage {
+    static NSMutableArray *statArray;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        statArray = [NSMutableArray array];
+    });
+    return statArray;
+}
+
 + (void)dismissPopup:(UILabel *)popup {
     
-    Helper *sharedHelper = [self sharedHelper];
-
     // Fade out the message and destroy popup
     [UIView animateWithDuration:0.3
                      animations:^  {
                          popup.transform = CGAffineTransformMakeScale(1.3, 1.3);
                          popup.alpha = 0; }
                      completion:^ (BOOL finished) {
-                         [[sharedHelper popupLabels] removeObject:popup];
+                         [self.popupStorage removeObject:popup];
                          [popup removeFromSuperview];
                      }];
 }
 
-- (void)calculatePopupPosition
++ (void)calculatePopupPosition
 {
  
     //Get keyWindos
     UIWindow *appKeyWindow = [[UIApplication sharedApplication] keyWindow];
     CGPoint appWindowCenter = appKeyWindow.center;
     
-    NSMutableArray *popups = [self popupLabels];
     
     //calculate initial vertical offset
-    appWindowCenter.y = appKeyWindow.center.y - (POPUP_HEIGHT / 2 + POPUP_VERTICAL_OFFSET) * (popups.count - 1);
+    appWindowCenter.y = appKeyWindow.center.y - (POPUP_HEIGHT / 2 + POPUPS_VERTICAL_OFFSET) * (self.popupStorage.count - 1);
     
-    for (int i = 0; i < popups.count; i++) {
-        UILabel *popup = popups[i];
+    for (int i = 0; i < self.popupStorage.count; i++) {
+        UILabel *popup = self.popupStorage[i];
         
-        //don't animate last object
-        if (![popup isEqual:popups.lastObject]) {
+        //don't animate last popup
+        if ((i + 1) != self.popupStorage.count) {
             [UIView animateWithDuration:0.3 animations:^{
                 popup.center = appWindowCenter;
             }];
@@ -147,7 +134,7 @@
         }
         
         //place next popup lower
-        appWindowCenter.y += POPUP_HEIGHT + POPUP_VERTICAL_OFFSET;
+        appWindowCenter.y += POPUP_HEIGHT + POPUPS_VERTICAL_OFFSET;
     }
 }
 

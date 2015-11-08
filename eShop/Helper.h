@@ -15,7 +15,7 @@
 #define SHOP_ITEMS_TABLE_ROW_HIEGHT 50.0
 #define SHOP_REFRESH_TIME 1.0 // 1.0
 #define BUY_ITEM_TIME 1.0 // 3.0
-#define ADD_ITEM_TIME 1.0 //5.0
+#define ADD_ITEM_TIME 4.0 //5.0
 
 //Data model keys
 #define ITEM_NAME_KEY @"name"
@@ -36,7 +36,11 @@
 //Show alert with OK button
 + (void)showOKAlertWithTitle:(NSString *)title andMessage:(NSString *)message;
 
-//Show popup for 1.5 sec
+//Show popup
+#define POPUP_DELAY 1.5
+#define POPUP_HEIGHT 50
+#define POPUP_WIDTH 250
+#define POPUPS_VERTICAL_OFFSET 10
 + (void)showPopupWithMesssage:(NSString *)message;
 
 @end
