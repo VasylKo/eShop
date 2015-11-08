@@ -59,9 +59,9 @@
 }
 
 - (void)prepareViewControllerForAddItemMode {
-    self.itemNameTextView.text = @"";
-    self.itemDescriptionTextView.text = @"";
-    self.itemPriceTextView.text = @"";
+//    self.itemNameTextView.text = @"";
+//    self.itemDescriptionTextView.text = @"";
+//    self.itemPriceTextView.text = @"";
    
     self.butItemButton.hidden = YES;
 }

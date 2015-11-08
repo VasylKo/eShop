@@ -15,10 +15,12 @@ NSString *const kItemPurchasedToShopNotification = @"itemPurchasedToShopNotifica
 
 @interface ShopManager ()
 @property (nonatomic, strong, readwrite) NSArray *shopItems;
-
+@property (nonatomic) dispatch_queue_t serialQueue;
 @end
 
 @implementation ShopManager
+@synthesize shopItems = _shopItems;
+
 #pragma mark - Singleton
 + (instancetype)sharedManager
 {
@@ -27,7 +29,10 @@ NSString *const kItemPurchasedToShopNotification = @"itemPurchasedToShopNotifica
     
     dispatch_once(&onceToken, ^{
         sharedManager = [[ShopManager alloc] init];
-        
+        if (sharedManager) {
+            //Create serial queue to work with shopItems to protect it when accessing from different threads.
+            sharedManager.serialQueue = dispatch_queue_create("com.VasylKotsiuba.serialQueue", DISPATCH_QUEUE_SERIAL);
+        }
     });
     
     return sharedManager;
@@ -44,8 +49,8 @@ NSString *const kItemPurchasedToShopNotification = @"itemPurchasedToShopNotifica
 #pragma mark - Shop manager
 - (void)loadShopDataInBackground:(void (^)(BOOL finished))completionHandler {
     
-    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(concurrentQueue, ^{
+    //dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(self.serialQueue, ^{
         
 #warning Test delay to show that data is loading in backgroung
         [NSThread sleepForTimeInterval:SHOP_REFRESH_TIME];
@@ -62,8 +67,9 @@ NSString *const kItemPurchasedToShopNotification = @"itemPurchasedToShopNotifica
 
 - (void)addItemToShop:(Item *)item withCompletionHandler:(void (^)(BOOL success))completionHandler {
     //Performe task in background
-    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(concurrentQueue, ^{
+    //dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_async(self.serialQueue, ^{
 
 #warning Test delay to emutale time nedeed to add item to shop
         [NSThread sleepForTimeInterval:ADD_ITEM_TIME];
