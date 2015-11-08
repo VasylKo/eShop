@@ -33,8 +33,14 @@
     self.shopManager = [ShopManager sharedManager];
     [self refreshShopData];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(newItemAddedToShopNotification:)
+                                                 name:kItemAddedToShopNotification
+                                               object:self.shopManager];
+    
 }
 
+#pragma mark - Interaction with shop manager
 - (void)refreshShopData {
     [self.refreshControl beginRefreshing];
     
@@ -53,7 +59,12 @@
     }];
 }
 
-#pragma mark - Accessors
+- (void)newItemAddedToShopNotification:(NSNotification *)notification{
+    NSIndexPath *insertIndexPath = [NSIndexPath indexPathForRow:self.shopItems.count - 1 inSection:0];
+    
+    [self.tableView insertRowsAtIndexPaths:@[insertIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 - (NSArray *)shopItems {
     return self.shopManager.shopItems;
 }

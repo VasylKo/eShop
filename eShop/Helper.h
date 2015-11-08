@@ -13,9 +13,9 @@
 
 #define SHOP_ITEM_REUSABLE_IDENTIFIER @"shopItem"
 #define SHOP_ITEMS_TABLE_ROW_HIEGHT 50.0
-#define SHOP_REFRESH_TIME 2.0
-#define BUY_ITEM_TIME 3.0
-#define ADD_ITEM_TIME 5.0
+#define SHOP_REFRESH_TIME 1.0 // 1.0
+#define BUY_ITEM_TIME 1.0 // 3.0
+#define ADD_ITEM_TIME 1.0 //5.0
 
 //Data model keys
 #define ITEM_NAME_KEY @"name"
@@ -34,6 +34,6 @@
 + (NSString *)currencyFormatter:(NSString *)givenString;
 
 //Show alert with OK button
-+ (void)showOKAlertWithTitle:(NSString *)title andMessage:(NSString *)message inViewController:(UIViewController *)vc;
++ (void)showOKAlertWithTitle:(NSString *)title andMessage:(NSString *)message;
 
 @end

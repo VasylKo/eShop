@@ -86,8 +86,7 @@
         [self addItemToShop];
     } else {
         [Helper showOKAlertWithTitle:@"Ошибка"
-                          andMessage:@"Пожалуйста, заполните всю информацию о товаре"
-                    inViewController:self];
+                          andMessage:@"Пожалуйста, заполните всю информацию о товаре"];
     }
     
 }
@@ -109,9 +108,11 @@
         
         //Make UI updates in main thread
         dispatch_async(dispatch_get_main_queue(), ^{
-            [Helper showOKAlertWithTitle:item.itemName
-                              andMessage:@"Товар добвлен в магазин"
-                        inViewController:weakSelf];
+            if (success) {
+                [Helper showOKAlertWithTitle:item.itemName
+                                  andMessage:@"Товар добвлен в магазин"];
+            }
+            
         });
         
     }];

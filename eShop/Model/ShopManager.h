@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 @class Item;
 
+extern NSString *const kItemAddedToShopNotification;
+
 @interface ShopManager : NSObject
 @property (nonatomic, strong, readonly) NSArray *shopItems;
 

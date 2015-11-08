@@ -10,6 +10,8 @@
 #import "Item.h"
 #import "Helper.h"
 
+NSString *const kItemAddedToShopNotification = @"itemAddedToShopNotification";
+
 @interface ShopManager ()
 @property (nonatomic, strong, readwrite) NSArray *shopItems;
 
@@ -92,7 +94,7 @@
         NSString *JSONFilePath = [self JSONFileLocation];
         
         if ([self fileExistsAtPath:JSONFilePath]) {
-            addedItems = [self loadJSONData];
+            addedItems = [self loadJSONDataToArray];
         }
         
         //Parse item
@@ -102,9 +104,19 @@
         addedItems = [addedItems arrayByAddingObject:itemDic];
         
         //Write array to disk
-        [self saveArrayAsJSON:addedItems toPath:JSONFilePath];
+        BOOL isSavedToDisk = [self saveArrayAsJSON:addedItems toPath:JSONFilePath];
         
-        completionHandler(YES);
+        //add item to current shop manager
+        [self addItemsToShop:@[item]];
+        
+        //Post notification on main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:kItemAddedToShopNotification
+                                                                object:self
+                                                              userInfo:@{ITEM_NAME_KEY : item.itemName}];
+        });
+        
+        completionHandler(isSavedToDisk);
     });
     
 }
@@ -186,8 +198,9 @@
     
 }
 
-- (void)saveArrayAsJSON:(NSArray *)array toPath:(NSString *)filePath {
+- (BOOL)saveArrayAsJSON:(NSArray *)array toPath:(NSString *)filePath {
     
+    BOOL result = NO;
     //Serialize JSON
     NSError *error = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:array
@@ -197,13 +210,15 @@
     
     if (!error) {
         //Write safety to file
-        [jsonData writeToFile:filePath atomically:YES];
+        result = [jsonData writeToFile:filePath atomically:YES];
     } else {
         NSLog(@"ERROR! Can't serialize JSON:%@", [error localizedDescription]);
     }
+    
+    return result;
 }
 
-- (NSArray *)loadJSONData {
+- (NSArray *)loadJSONDataToArray {
     
     NSArray *result = nil;
     

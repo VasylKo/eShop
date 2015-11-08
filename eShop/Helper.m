@@ -29,7 +29,7 @@
     return result;
 }
 
-+ (void)showOKAlertWithTitle:(nullable NSString *)title andMessage:(nullable NSString *)message inViewController:(UIViewController *)viewController {
++ (void)showOKAlertWithTitle:(nullable NSString *)title andMessage:(nullable NSString *)message {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
                                                                              message:message
                                                                       preferredStyle:UIAlertControllerStyleAlert];
@@ -39,8 +39,7 @@
     
     [alertController addAction:okActin];
     
-    
-    [viewController presentViewController:alertController animated:YES completion:nil];
+    [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alertController animated:YES completion:nil];
 }
 
 @end
