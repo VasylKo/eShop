@@ -10,8 +10,9 @@
 #import "ShopManager.h"
 #import "Helper.h"
 #import <CoreText/CoreText.h>
+#import <MessageUI/MessageUI.h>
 
-@interface ItemDetailsTableViewController () <UITextViewDelegate>
+@interface ItemDetailsTableViewController () <UITextViewDelegate, MFMailComposeViewControllerDelegate>
 @property (nonatomic,strong) ShopManager *shopManager;
 
 @property (weak, nonatomic) IBOutlet UIButton *butItemButton;
@@ -99,6 +100,7 @@
 
 - (void)shareButtonPressed:(UIBarButtonItem *)sender {
     [self createPDF];
+    [self sendPDFOverMail];
 }
 
 #pragma mark - Add item
@@ -208,6 +210,35 @@ shouldChangeTextInRange: (NSRange) range
     return [documentsFolder
             stringByAppendingPathComponent:@"item.PDF"];
     
+}
+
+- (void)sendPDFOverMail {
+    NSData *pdfData = [NSData dataWithContentsOfFile:[self PDFFileLocation]];
+    
+    MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
+    mailComposeViewController.mailComposeDelegate = self;
+    
+    //Configurate mail
+    [mailComposeViewController setSubject:self.item.itemName];
+    [mailComposeViewController setMessageBody:@"Посмотрите товар с нашего магазина."
+                                       isHTML:NO];
+    [mailComposeViewController addAttachmentData:pdfData
+                                        mimeType:@"application/pdf"
+                                        fileName:[NSString stringWithFormat:@"Item.pdf"]];
+    
+    [self presentViewController:mailComposeViewController animated:YES completion:nil];
+}
+
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+    [controller dismissViewControllerAnimated:YES completion:nil];
+    
+    if (result == MFMailComposeResultSent) {
+        NSLog(@"PDF sent");
+    } else {
+        NSLog(@"PDF send error %@",[error localizedDescription]);
+    }
 }
 
 @end
