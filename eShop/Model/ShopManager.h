@@ -13,12 +13,12 @@ extern NSString *const kItemAddedToShopNotification;
 extern NSString *const kItemPurchasedToShopNotification;
 
 @interface ShopManager : NSObject
-@property (nonatomic, strong, readonly) NSArray *shopItems;
+@property (nonatomic, strong, readonly) NSArray *shopItems; //Of Item objects
 
 //Singleton
 + (instancetype)sharedManager;
 
-- (void)loadShopDataInBackground:(void (^)(BOOL success))completionHandler; //Array of Item objects
+- (void)loadShopDataInBackground:(void (^)(BOOL finished))completionHandler;
 - (void)addItemToShop:(Item *)item withCompletionHandler:(void (^)(BOOL success))completionHandler;
 - (void)purchaseItem:(Item *)item withCompletionHandler:(void (^)(BOOL success))completionHandler;
 

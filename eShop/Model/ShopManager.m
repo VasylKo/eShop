@@ -28,74 +28,51 @@ NSString *const kItemPurchasedToShopNotification = @"itemPurchasedToShopNotifica
     dispatch_once(&onceToken, ^{
         sharedManager = [[ShopManager alloc] init];
         
-        if (sharedManager) {
-            
-            //Create new shop items list
-            sharedManager.shopItems = [NSArray new];
-        
-        }
-        
     });
     
     return sharedManager;
 }
 
+- (NSArray *)shopItems {
+    if (!_shopItems) {
+        _shopItems = [NSArray new];
+    }
+    
+    return _shopItems;
+}
+
 #pragma mark - Shop manager
-- (void)loadShopDataInBackground:(void (^)(BOOL success))completionHandler {
+- (void)loadShopDataInBackground:(void (^)(BOOL finished))completionHandler {
     
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(concurrentQueue, ^{
-        #warning Test delay to show that data is loading in backgroung
+        
+#warning Test delay to show that data is loading in backgroung
         [NSThread sleepForTimeInterval:SHOP_REFRESH_TIME];
+        
+        self.shopItems = nil;
+
         [self loadShopDataFromPlist];
+        [self loadShopDataFromJSON];
         
         completionHandler(YES);
     });
     
 }
 
-- (void)loadShopDataFromPlist {
-    
-    NSString *plistFilePath = [self initialShopItmesPlistPath];
-    
-    //Check if file exists at given path
-    if (plistFilePath) {
-        //Load data to array
-        NSArray *itemsFromPlist = [NSArray arrayWithContentsOfFile:plistFilePath];
-        
-        //Parse array
-        NSArray *items = [self parseItemsFromDataArray:itemsFromPlist];
-        
-        //Add items to shop
-        [self addItemsToShopManager:items];
-    }
-}
-
-//Add Item objects to shop list
-- (void)addItemsToShopManager:(NSArray *)items {
-    
-    if (items.count) {
-        //Check if items are of Item type and app them to the shop list
-        for (NSObject *object in items) {
-            if ([object isKindOfClass:[Item class]]) {
-                self.shopItems = [self.shopItems arrayByAddingObject:object];
-            }
-        }
-    }
-}
-
 - (void)addItemToShop:(Item *)item withCompletionHandler:(void (^)(BOOL success))completionHandler {
     //Performe task in background
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(concurrentQueue, ^{
-        #warning Test delay to emutale time nedeed to add item to shop
+
+#warning Test delay to emutale time nedeed to add item to shop
         [NSThread sleepForTimeInterval:ADD_ITEM_TIME];
         
         NSArray *addedItems = [NSArray new];
         NSString *JSONFilePath = [self JSONFileLocation];
         
         if ([self fileExistsAtPath:JSONFilePath]) {
-            addedItems = [self loadJSONDataToArray];
+            addedItems = [self loadJSONDataToArrayFromPath:JSONFilePath];
         }
         
         //Parse item
@@ -126,13 +103,14 @@ NSString *const kItemPurchasedToShopNotification = @"itemPurchasedToShopNotifica
     //Performe task in background
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(concurrentQueue, ^{
-        #warning Test delay to emutale time nedeed to add item to shop
+
+#warning Test delay to emutale time nedeed to add item to shop
         [NSThread sleepForTimeInterval:BUY_ITEM_TIME];
         
         //Do smth in real life app
+        completionHandler(YES);
         
         //Post notification on main thread
-        
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:kItemPurchasedToShopNotification
                                                                 object:self
@@ -140,6 +118,49 @@ NSString *const kItemPurchasedToShopNotification = @"itemPurchasedToShopNotifica
         });
         
     });
+}
+
+#pragma mark - Manage data
+- (void)loadShopDataFromPlist {
+    
+    NSString *plistFilePath = [self initialShopItmesPlistPath];
+    
+    //Check if file exists at given path
+    if (plistFilePath) {
+        //Load data to array
+        NSArray *itemsFromPlist = [NSArray arrayWithContentsOfFile:plistFilePath];
+        
+        //Parse array
+        NSArray *items = [self parseItemsFromDataArray:itemsFromPlist];
+        
+        //Add items to shop
+        [self addItemsToShopManager:items];
+    }
+}
+
+- (void)loadShopDataFromJSON {
+    
+    NSString *JSONFilePath = [self JSONFileLocation];
+    
+    if ([self fileExistsAtPath:JSONFilePath]) {
+        NSArray *itemsData = [self loadJSONDataToArrayFromPath:JSONFilePath];
+        NSArray *items = [self parseItemsFromDataArray:itemsData];
+        [self addItemsToShopManager:items];
+    }
+   
+}
+
+//Add Item objects to shop list
+- (void)addItemsToShopManager:(NSArray *)items {
+    
+    if (items.count) {
+        //Check if items are of Item type and app them to the shop list
+        for (NSObject *object in items) {
+            if ([object isKindOfClass:[Item class]]) {
+                self.shopItems = [self.shopItems arrayByAddingObject:object];
+            }
+        }
+    }
 }
 
 #pragma mark - Hepler methods
@@ -239,11 +260,11 @@ NSString *const kItemPurchasedToShopNotification = @"itemPurchasedToShopNotifica
     return result;
 }
 
-- (NSArray *)loadJSONDataToArray {
+- (NSArray *)loadJSONDataToArrayFromPath:(NSString *)filePath {
     
     NSArray *result = nil;
     
-    NSData *jsonData = [NSData dataWithContentsOfFile:[self JSONFileLocation]];
+    NSData *jsonData = [NSData dataWithContentsOfFile:filePath];
     
     //Parse JSON
     NSError *error = nil;

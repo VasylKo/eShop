@@ -37,8 +37,6 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchUpinside:)];
     tap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tap];
-    
-    
 }
 
 #pragma mark - Initial setup
@@ -61,9 +59,9 @@
 }
 
 - (void)prepareViewControllerForAddItemMode {
-    //self.itemNameTextView.text = @"";
-    //self.itemDescriptionTextView.text = @"";
-    //self.itemPriceTextView.text = @"";
+    self.itemNameTextView.text = @"";
+    self.itemDescriptionTextView.text = @"";
+    self.itemPriceTextView.text = @"";
    
     self.butItemButton.hidden = YES;
 }
