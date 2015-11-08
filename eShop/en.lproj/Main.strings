@@ -27,7 +27,7 @@
 "VmE-dO-pJm.text" = "Item";
 
 /* Class = "UITableViewSection"; headerTitle = "Назваине"; ObjectID = "bLH-7N-bqm"; */
-"bLH-7N-bqm.headerTitle" = "Назваине";
+"bLH-7N-bqm.headerTitle" = "Название";
 
 /* Class = "UITabBarItem"; title = "Магазин"; ObjectID = "biM-rE-DrG"; */
 "biM-rE-DrG.title" = "Магазин";
