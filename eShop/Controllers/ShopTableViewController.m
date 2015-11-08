@@ -33,10 +33,17 @@
     self.shopManager = [ShopManager sharedManager];
     [self refreshShopData];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(newItemAddedToShopNotification:)
-                                                 name:kItemAddedToShopNotification
-                                               object:self.shopManager];
+    //Listen for notifications from shop namger
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self
+                         selector:@selector(newItemAddedToShopNotification:)
+                             name:kItemAddedToShopNotification
+                           object:self.shopManager];
+    
+    [notificationCenter addObserver:self
+                           selector:@selector(itemPurchasedNotification:)
+                               name:kItemPurchasedToShopNotification
+                             object:self.shopManager];
     
 }
 
@@ -63,6 +70,17 @@
     NSIndexPath *insertIndexPath = [NSIndexPath indexPathForRow:self.shopItems.count - 1 inSection:0];
     
     [self.tableView insertRowsAtIndexPaths:@[insertIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    NSString *itemName = notification.userInfo[ITEM_NAME_KEY];
+    NSString *message = [NSString stringWithFormat:@"%@\nТовар добавлен!", itemName];
+    [Helper showPopupWithMesssage:message];
+}
+
+- (void)itemPurchasedNotification:(NSNotification *)notification{
+    
+    NSString *itemName = notification.userInfo[ITEM_NAME_KEY];
+    NSString *message = [NSString stringWithFormat:@"Вы купили %@\nСпасибо за покупку!", itemName];
+    [Helper showPopupWithMesssage:message];
 }
 
 - (NSArray *)shopItems {
@@ -158,6 +176,10 @@
     }
     
     
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

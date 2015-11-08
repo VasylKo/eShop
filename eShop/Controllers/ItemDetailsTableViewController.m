@@ -78,7 +78,9 @@
 #pragma mark - Actions
 - (IBAction)buyItemButtonPressed:(UIButton *)sender {
     if (self.item) {
-        NSLog(@"Buy %@", self.item.itemName);
+        [self.shopManager purchaseItem:self.item withCompletionHandler:^(BOOL success) {
+            
+        }];
     }
 }
 - (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
@@ -103,14 +105,15 @@
                                    andPrice:self.itemPriceTextView.text];
     
     
-    ItemDetailsTableViewController * __weak weakSelf = self;
     [self.shopManager addItemToShop:item withCompletionHandler:^(BOOL success) {
         
         //Make UI updates in main thread
         dispatch_async(dispatch_get_main_queue(), ^{
             if (success) {
+                /*
                 [Helper showOKAlertWithTitle:item.itemName
                                   andMessage:@"Товар добвлен в магазин"];
+                 */
             }
             
         });

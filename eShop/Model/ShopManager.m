@@ -11,6 +11,7 @@
 #import "Helper.h"
 
 NSString *const kItemAddedToShopNotification = @"itemAddedToShopNotification";
+NSString *const kItemPurchasedToShopNotification = @"itemPurchasedToShopNotification";
 
 @interface ShopManager ()
 @property (nonatomic, strong, readwrite) NSArray *shopItems;
@@ -66,12 +67,12 @@ NSString *const kItemAddedToShopNotification = @"itemAddedToShopNotification";
         NSArray *items = [self parseItemsFromDataArray:itemsFromPlist];
         
         //Add items to shop
-        [self addItemsToShop:items];
+        [self addItemsToShopManager:items];
     }
 }
 
 //Add Item objects to shop list
-- (void)addItemsToShop:(NSArray *)items {
+- (void)addItemsToShopManager:(NSArray *)items {
     
     if (items.count) {
         //Check if items are of Item type and app them to the shop list
@@ -84,7 +85,7 @@ NSString *const kItemAddedToShopNotification = @"itemAddedToShopNotification";
 }
 
 - (void)addItemToShop:(Item *)item withCompletionHandler:(void (^)(BOOL success))completionHandler {
-    
+    //Performe task in background
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(concurrentQueue, ^{
         #warning Test delay to emutale time nedeed to add item to shop
@@ -107,7 +108,7 @@ NSString *const kItemAddedToShopNotification = @"itemAddedToShopNotification";
         BOOL isSavedToDisk = [self saveArrayAsJSON:addedItems toPath:JSONFilePath];
         
         //add item to current shop manager
-        [self addItemsToShop:@[item]];
+        [self addItemsToShopManager:@[item]];
         
         //Post notification on main thread
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -119,6 +120,26 @@ NSString *const kItemAddedToShopNotification = @"itemAddedToShopNotification";
         completionHandler(isSavedToDisk);
     });
     
+}
+
+- (void)purchaseItem:(Item *)item withCompletionHandler:(void (^)(BOOL))completionHandler {
+    //Performe task in background
+    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(concurrentQueue, ^{
+        #warning Test delay to emutale time nedeed to add item to shop
+        [NSThread sleepForTimeInterval:BUY_ITEM_TIME];
+        
+        //Do smth in real life app
+        
+        //Post notification on main thread
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:kItemPurchasedToShopNotification
+                                                                object:self
+                                                              userInfo:@{ITEM_NAME_KEY : item.itemName}];
+        });
+        
+    });
 }
 
 #pragma mark - Hepler methods

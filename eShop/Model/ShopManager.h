@@ -10,6 +10,7 @@
 @class Item;
 
 extern NSString *const kItemAddedToShopNotification;
+extern NSString *const kItemPurchasedToShopNotification;
 
 @interface ShopManager : NSObject
 @property (nonatomic, strong, readonly) NSArray *shopItems;
@@ -19,5 +20,6 @@ extern NSString *const kItemAddedToShopNotification;
 
 - (void)loadShopDataInBackground:(void (^)(BOOL success))completionHandler; //Array of Item objects
 - (void)addItemToShop:(Item *)item withCompletionHandler:(void (^)(BOOL success))completionHandler;
+- (void)purchaseItem:(Item *)item withCompletionHandler:(void (^)(BOOL success))completionHandler;
 
 @end

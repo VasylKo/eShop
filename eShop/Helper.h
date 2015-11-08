@@ -36,4 +36,7 @@
 //Show alert with OK button
 + (void)showOKAlertWithTitle:(NSString *)title andMessage:(NSString *)message;
 
+//Show popup for 1.5 sec
++ (void)showPopupWithMesssage:(NSString *)message;
+
 @end
