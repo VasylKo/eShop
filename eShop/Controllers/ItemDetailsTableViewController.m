@@ -9,6 +9,7 @@
 #import "ItemDetailsTableViewController.h"
 #import "ShopManager.h"
 #import "Helper.h"
+#import <CoreText/CoreText.h>
 
 @interface ItemDetailsTableViewController () <UITextViewDelegate>
 @property (nonatomic,strong) ShopManager *shopManager;
@@ -17,6 +18,11 @@
 @property (weak, nonatomic) IBOutlet UITextView *itemNameTextView;
 @property (weak, nonatomic) IBOutlet UITextView *itemDescriptionTextView;
 @property (weak, nonatomic) IBOutlet UITextView *itemPriceTextView;
+@property (strong, nonatomic) IBOutlet UIView *pdfView;
+@property (weak, nonatomic) IBOutlet UILabel *pdfItemName;
+@property (weak, nonatomic) IBOutlet UILabel *pdfItemDescription;
+@property (weak, nonatomic) IBOutlet UILabel *pdfItemPrice;
+
 
 @end
 
@@ -92,6 +98,7 @@
 }
 
 - (void)shareButtonPressed:(UIBarButtonItem *)sender {
+    [self createPDF];
 }
 
 #pragma mark - Add item
@@ -152,6 +159,55 @@ shouldChangeTextInRange: (NSRange) range
     inRange = [string rangeOfCharacterFromSet:allowedChars];
     
     return inRange.location != NSNotFound ? NO : YES;
+}
+
+#pragma mark - PDF
+//Generate a PDF using UIKit
+-(void)createPDF {
+    
+    NSString* pdfFileLocation = [self PDFFileLocation];
+    
+    [[NSBundle mainBundle] loadNibNamed:@"PDFView" owner:self options:nil];
+    
+    // Create the PDF context using the default page size of 612 x 792.
+    UIGraphicsBeginPDFContextToFile(pdfFileLocation, CGRectZero, nil);
+    CGContextRef pdfContext=UIGraphicsGetCurrentContext();
+    
+    UIGraphicsBeginPDFPage();
+    
+    //Update the UI elements on view
+    self.pdfItemName.text = self.item.itemName;
+    self.pdfItemDescription.text = self.item.itemDescription;
+    self.pdfItemPrice.text = [Helper currencyFormatter:self.item.itemPrice];
+    
+    [self.pdfView layoutIfNeeded];
+    
+    //Rander view's layer to pdf
+    [self.pdfView.layer renderInContext:pdfContext];
+    
+    // finally end the PDF context.
+    UIGraphicsEndPDFContext();
+}
+
+- (NSString *)PDFFileLocation{
+    
+    //Get the document folder(s)
+    NSArray *folders =
+    NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                        NSUserDomainMask,
+                                        YES);
+    
+    if ([folders count] == 0){
+        return nil;
+    }
+    
+    // Get the first folder path
+    NSString *documentsFolder = folders[0];
+    
+    // Append the filename to the end of the documents path
+    return [documentsFolder
+            stringByAppendingPathComponent:@"item.PDF"];
+    
 }
 
 @end
