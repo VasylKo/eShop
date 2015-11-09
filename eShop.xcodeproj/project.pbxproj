@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51148E811BF08A2A0084C32D /* shopLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 51148E801BF08A2A0084C32D /* shopLogo.png */; };
 		512897EA1BEC869800B59B62 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 512897E91BEC869800B59B62 /* main.m */; };
 		512897ED1BEC869800B59B62 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 512897EC1BEC869800B59B62 /* AppDelegate.m */; };
 		512897F31BEC869800B59B62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512897F11BEC869800B59B62 /* Main.storyboard */; };
@@ -20,7 +21,6 @@
 		5167139C1BED6A8300B1DEE9 /* ItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5167139B1BED6A8300B1DEE9 /* ItemTest.m */; };
 		516713A41BED6CED00B1DEE9 /* ShopManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 516713A31BED6CED00B1DEE9 /* ShopManagerTest.m */; };
 		516713AB1BEDF21100B1DEE9 /* ItemDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516713AA1BEDF21100B1DEE9 /* ItemDetailsTableViewController.m */; };
-		516713B01BEFC1D200B1DEE9 /* shopLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 516713AF1BEFC1D200B1DEE9 /* shopLogo.png */; };
 		516713B21BEFC6F600B1DEE9 /* PDFView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516713B11BEFC6F600B1DEE9 /* PDFView.xib */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		51148E7E1BF07F3B0084C32D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51148E801BF08A2A0084C32D /* shopLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopLogo.png; sourceTree = SOURCE_ROOT; };
 		512897E51BEC869800B59B62 /* eShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		512897E91BEC869800B59B62 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		512897EB1BEC869800B59B62 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -59,7 +60,6 @@
 		516713A81BEDF15200B1DEE9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		516713A91BEDF21100B1DEE9 /* ItemDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailsTableViewController.h; sourceTree = "<group>"; };
 		516713AA1BEDF21100B1DEE9 /* ItemDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailsTableViewController.m; sourceTree = "<group>"; };
-		516713AF1BEFC1D200B1DEE9 /* shopLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shopLogo.png; path = ../../Resources/shopLogo.png; sourceTree = "<group>"; };
 		516713B11BEFC6F600B1DEE9 /* PDFView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDFView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,7 +117,7 @@
 		512897E81BEC869800B59B62 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				516713AF1BEFC1D200B1DEE9 /* shopLogo.png */,
+				51148E801BF08A2A0084C32D /* shopLogo.png */,
 				512897EB1BEC869800B59B62 /* AppDelegate.h */,
 				512897EC1BEC869800B59B62 /* AppDelegate.m */,
 				512897E91BEC869800B59B62 /* main.m */,
@@ -250,7 +250,7 @@
 			files = (
 				512897F81BEC869800B59B62 /* LaunchScreen.storyboard in Resources */,
 				512897F51BEC869800B59B62 /* Assets.xcassets in Resources */,
-				516713B01BEFC1D200B1DEE9 /* shopLogo.png in Resources */,
+				51148E811BF08A2A0084C32D /* shopLogo.png in Resources */,
 				5128980F1BEC9EB000B59B62 /* InitialShopItems.plist in Resources */,
 				512897F31BEC869800B59B62 /* Main.storyboard in Resources */,
 				516713B21BEFC6F600B1DEE9 /* PDFView.xib in Resources */,
