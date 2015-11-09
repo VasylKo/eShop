@@ -51,10 +51,9 @@
 - (void)testItemPrice {
     NSString *testPrice = @"250";
     self.item.itemPrice = testPrice;
-    NSString *expactedResult = [Helper currencyFormatter:testPrice]; //for US will be $250
     
     XCTAssertNotNil(self.item.itemPrice, "Price should not be nil");
-    XCTAssertTrue([self.item.itemPrice isEqualToString:expactedResult], "Item price don't match test price");
+    XCTAssertEqual(self.item.itemPrice, testPrice, "Item price don't match test price");
     
     self.item.itemName = nil;
     XCTAssertNotNil(self.item.itemPrice, "Price should not be nil");

@@ -51,7 +51,66 @@
         XCTAssertNil(error, "Check for error");
     }];
     
+}
+
+- (void)testAddItemToShop {
+    //Asynchronous test
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Add item to shop"];
     
+    //Create test item
+    Item *item = [[Item alloc] initWithName:@"test" description:@"test" andPrice:@"111"];
+    
+    //add test item to shop
+    ShopManagerTest *__weak weakSelf = self;
+    
+    [self.shopManager addItemToShop:item
+              withCompletionHandler:^(BOOL success) {
+                  if (success) {
+                      XCTAssert([weakSelf.shopManager.shopItems containsObject:item], "Shop should have test item after adding");
+                      
+                      //Fulfill expectation
+                      [expectation fulfill];
+                  }
+              }];
+    
+    
+    //Check add item notification
+    [self expectationForNotification:kItemAddedToShopNotification
+                              object:self.shopManager
+                             handler:^BOOL(NSNotification * _Nonnull notification) {
+                                 return [notification.name isEqualToString:kItemAddedToShopNotification] ? YES : NO;
+                             }];
+    
+    [self waitForExpectationsWithTimeout:10.0 handler:^(NSError * _Nullable error) {
+        XCTAssertNil(error, "Check for error");
+    }];
+}
+
+- (void)testBuyItemFromShop {
+    //Asynchronous test
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Buy item"];
+    
+    //Create test item
+    Item *item = [[Item alloc] initWithName:@"test" description:@"test" andPrice:@"111"];
+    
+    
+    [self.shopManager purchaseItem:item withCompletionHandler:^(BOOL success) {
+        if (success) {
+            //Fulfill expectation
+            [expectation fulfill];
+        }
+    }];
+    
+    //Check add item notification
+    [self expectationForNotification:kItemPurchasedToShopNotification
+                              object:self.shopManager
+                             handler:^BOOL(NSNotification * _Nonnull notification) {
+                                 return [notification.name isEqualToString:kItemPurchasedToShopNotification] ? YES : NO;
+                             }];
+    
+    [self waitForExpectationsWithTimeout:10.0 handler:^(NSError * _Nullable error) {
+        XCTAssertNil(error, "Check for error");
+    }];
 }
 
 

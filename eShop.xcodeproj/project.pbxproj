@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51148E7F1BF07F3B0084C32D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51148E7E1BF07F3B0084C32D /* Info.plist */; };
 		512897EA1BEC869800B59B62 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 512897E91BEC869800B59B62 /* main.m */; };
 		512897ED1BEC869800B59B62 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 512897EC1BEC869800B59B62 /* AppDelegate.m */; };
 		512897F31BEC869800B59B62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512897F11BEC869800B59B62 /* Main.storyboard */; };
@@ -262,7 +261,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51148E7F1BF07F3B0084C32D /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
