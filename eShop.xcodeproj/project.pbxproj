@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51148E7F1BF07F3B0084C32D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51148E7E1BF07F3B0084C32D /* Info.plist */; };
 		512897EA1BEC869800B59B62 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 512897E91BEC869800B59B62 /* main.m */; };
 		512897ED1BEC869800B59B62 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 512897EC1BEC869800B59B62 /* AppDelegate.m */; };
 		512897F31BEC869800B59B62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512897F11BEC869800B59B62 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		51148E7E1BF07F3B0084C32D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		512897E51BEC869800B59B62 /* eShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		512897E91BEC869800B59B62 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		512897EB1BEC869800B59B62 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -54,7 +56,6 @@
 		5128980E1BEC9EB000B59B62 /* InitialShopItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InitialShopItems.plist; sourceTree = "<group>"; };
 		516713991BED6A8300B1DEE9 /* eShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eShopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5167139B1BED6A8300B1DEE9 /* ItemTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemTest.m; sourceTree = "<group>"; };
-		5167139D1BED6A8300B1DEE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		516713A31BED6CED00B1DEE9 /* ShopManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopManagerTest.m; sourceTree = "<group>"; };
 		516713A81BEDF15200B1DEE9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		516713A91BEDF21100B1DEE9 /* ItemDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailsTableViewController.h; sourceTree = "<group>"; };
@@ -161,8 +162,8 @@
 		5167139A1BED6A8300B1DEE9 /* eShopTests */ = {
 			isa = PBXGroup;
 			children = (
+				51148E7E1BF07F3B0084C32D /* Info.plist */,
 				5167139B1BED6A8300B1DEE9 /* ItemTest.m */,
-				5167139D1BED6A8300B1DEE9 /* Info.plist */,
 				516713A31BED6CED00B1DEE9 /* ShopManagerTest.m */,
 			);
 			path = eShopTests;
@@ -261,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51148E7F1BF07F3B0084C32D /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +481,7 @@
 				516713A21BED6A8300B1DEE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
