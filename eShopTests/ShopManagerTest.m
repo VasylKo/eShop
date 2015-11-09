@@ -33,12 +33,12 @@
     //Asynchronous test
     XCTestExpectation *expectation = [self expectationWithDescription:@"Items list loading"];
     
-    [self.shopManager loadShopDataInBackground:^(NSArray *shopItems) {
+    [self.shopManager loadShopDataInBackground:^(BOOL finished) {
         
-        XCTAssert(shopItems.count > 0, "No items loaded");
+        XCTAssert(self.shopManager.shopItems.count > 0, "No items loaded");
         
         //Check if array containt Item objects
-        for (id item in shopItems) {
+        for (id item in self.shopManager.shopItems) {
             XCTAssert([item isKindOfClass:[Item class]], "Array contain non Item objects");
         }
         
