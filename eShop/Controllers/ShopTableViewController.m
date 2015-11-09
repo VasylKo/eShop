@@ -22,6 +22,7 @@
 
 @implementation ShopTableViewController
 
+#pragma mark - View life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -39,6 +40,19 @@
                            selector:@selector(itemPurchasedNotification:)
                                name:kItemPurchasedToShopNotification
                              object:self.shopManager];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    NSString *message = @"Меня зовут Василий Коцюба. Я хочу представить Вам результат выполнения тестового задания №1. Задание выполнено в соответствии с 1, 2 и 3 уровнем сложности + дополнительно добавлены Unit тесты. Также добавлена эмуляция обновления списка магазина в фоновом потоке с задержкой в 1 сек.";
+    
+    NSNumber *isShowedNum = [[NSUserDefaults standardUserDefaults] objectForKey:@"ShowGreet"];
+    if (!isShowedNum || !isShowedNum.boolValue) {
+        [Helper showOKAlertWithTitle:@"Здравствуйте!" andMessage:message];
+        [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"ShowGreet"];
+    }
+    
 }
 
 #pragma mark - Interaction with shop manager
